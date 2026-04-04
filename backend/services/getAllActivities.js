@@ -9,11 +9,12 @@ import { wrapper } from "axios-cookiejar-support";
 import * as cheerio from "cheerio";
 import achelper from "../helpers/activitiesHelpers.js";
 
+const lang = "pt_br"
 const jar = new CookieJar();
 const client = wrapper(axios.create({ jar, withCredentials: true}));
 const helper = achelper();
 
-export async function getLoginToken() {
+async function getLoginToken() {
     const response = await client.get('https://ava-grad.unifacef.com.br/login/index.php');
     const html = response.data;
     const $ = cheerio.load(html);
@@ -21,7 +22,7 @@ export async function getLoginToken() {
     return loginToken;
 };
 
-export async function getSessKey() {
+async function getSessKey() {
     const RA = "FAKE_RA";
     const pass = "FAKE_PASS";
 
@@ -40,9 +41,9 @@ export async function getSessKey() {
     return mcfg.sesskey;
 };
 
-export async function getCourses() {
+async function getCourses() {
     const sesskey = await getSessKey();
-    const response = await client.post(`https://ava-grad.unifacef.com.br/lib/ajax/service.php?sesskey=${sesskey}&info=core_course_get_enrolled_courses_by_timeline_classification`,
+    const response = await client.post(`https://ava-grad.unifacef.com.br/lib/ajax/service.php?sesskey=${sesskey}&info=core_course_get_enrolled_courses_by_timeline_classification&lang=${lang}`,
     [{
         args: {
             "classification": "all",
@@ -77,18 +78,20 @@ export default async function getAllActivities() {
     const finalArr = [];
     for (const course of courses) {
         const activitiesArray = [];
-        const raw = await client.get(course.link);
+        const raw = await client.get(`${course.link}&lang=${lang}`);
         const html = raw.data;
         const $ = cheerio.load(html);
         const links = $("a[href*='assign']");
-        links.each((index, link) => {
+
+        links.each(async (index, link) => {
             const href = $(link).attr("href");
-            const instanceName = $(link).find(".instancename");
-            const allTxt = instanceName.text();
-            const removeTxt = instanceName.find(".accesshide").text();
-            const name = allTxt.replace(removeTxt, "");
+            const raw = await client.get(href);
+            const html = raw.data;
+            const name = helper.getActName(link);
+            const dueDate = helper.getDueDate(html);
+            const done = helper.isDone(html);
             if (name) {
-                const actObj = helper.CreateActivityObj(name, href);
+                const actObj = helper.CreateActivityObj(name, href, dueDate, done);
                 activitiesArray.push(actObj);
             };
         });
