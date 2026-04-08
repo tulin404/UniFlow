@@ -1,9 +1,9 @@
 export default function Header() {
     return (
-        <header>
-            <a href="">
-                <svg width="64" height="64" viewBox="14 10 36 44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3" result="blur"/></filter></defs><path d="M20 16 V36 Q20 48 32 48 Q44 48 44 36 V16" stroke="#8B5CF6" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" opacity="0.25" filter="url(#glow)"/><path d="M20 16 V36 Q20 48 32 48 Q44 48 44 36 V16" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                <h1>niFlow</h1>
+        <header className="bg-header py-6 flex justify-center">
+            <a href="/" className="flex items-end">
+                <svg className="h-14" viewBox="14 10 36 44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="2.25" flood-color="#8B5CF6" flood-opacity="0.5"/></filter></defs><path d="M20 16 V36 Q20 48 32 48 Q44 48 44 36 V16" stroke="#8B5CF6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" filter="url(#glow)"/></svg>
+                <h1 className="font-[satoshi] text-text font-semibold text-6xl">niFlow</h1>
             </a>
         </header>
     );
