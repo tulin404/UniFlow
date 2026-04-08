@@ -16,4 +16,4 @@ Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef
 - MySQL
 - Redis
 
-!!! WIP !!!
+!!! 🚧 WIP 🚧 !!!
