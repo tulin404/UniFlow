@@ -15,3 +15,5 @@ Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef
 - JSON Web Tokens
 - MySQL
 - Redis
+
+!!! WIP !!!
