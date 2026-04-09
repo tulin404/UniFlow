@@ -8,6 +8,9 @@ import { CookieJar } from "tough-cookie";
 import { wrapper } from "axios-cookiejar-support";
 import * as cheerio from "cheerio";
 import achelper from "../helpers/activitiesHelpers.js";
+import { loadEnvFile } from "node:process";
+import { join } from "node:path";
+loadEnvFile(join(process.cwd(), ".env.local"));
 
 const lang = "pt_br"
 const jar = new CookieJar();
@@ -23,8 +26,8 @@ async function getLoginToken() {
 };
 
 async function getSessKey() {
-    const RA = "FAKE_RA";
-    const pass = "FAKE_PASS";
+    const RA = process.env.RA;
+    const pass = process.env.PASS;
 
     const loginToken = await getLoginToken();
     const response = await client.post('https://ava-grad.unifacef.com.br/login/index.php', 
@@ -87,11 +90,12 @@ export default async function getAllActivities() {
             const href = $(link).attr("href");
             const raw = await client.get(href);
             const html = raw.data;
+            const id = parseInt(href.slice(-6));
             const name = helper.getActName(link);
             const dueDate = helper.getDueDate(html);
             const done = helper.isDone(html);
             if (name) {
-                const actObj = helper.CreateActivityObj(name, href, dueDate, done);
+                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done);
                 activitiesArray.push(actObj);
             };
         });

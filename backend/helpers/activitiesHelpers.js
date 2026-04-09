@@ -13,8 +13,9 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actName, actLink, dueDate, done) {
+function CreateActivityObj(actId, actName, actLink, dueDate, done) {
     return {
+        actId: actId,
         actName: actName,
         actLink: actLink,
         dueDate: dueDate,
@@ -53,7 +54,7 @@ export default function achelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actName, actLink, dueDate, done) => CreateActivityObj(actName, actLink, dueDate, done),
+        CreateActivityObj: (actId, actName, actLink, dueDate, done) => CreateActivityObj(actId, actName, actLink, dueDate, done),
         getActName: (linkElement) => getActName(linkElement),
         getDueDate: (html) => getDueDate(html),
         isDone: (html) => isDone(html)
