@@ -25,7 +25,7 @@ export default function App() {
     return (
         <>
             <Header setTheme={setTheme} theme={theme} />
-            <Grid id="done" name="" />
+            <Grid id="done" name="Feitas" />
         </>
     )
 };
