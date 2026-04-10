@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import Header from "./components/Header"
+import Header from "./components/Header";
+import Grid from "./components/Grid";
 
 export default function App() {
     const browserTheme = () => {
@@ -22,6 +23,9 @@ export default function App() {
     }, [theme]);
 
     return (
-        <Header setTheme={setTheme} theme={theme} />
+        <>
+            <Header setTheme={setTheme} theme={theme} />
+            <Grid id="done" name="" />
+        </>
     )
 };

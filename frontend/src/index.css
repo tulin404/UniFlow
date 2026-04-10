@@ -15,15 +15,15 @@
 };
 
 .dark {
-    --color-header: #05070D;
-    --color-base: #0B0F1A;
-
-    --color-primary: #8B5CF6;
-    --color-primary-hover: #7C3AED;
-    --color-primary-soft: #A78BFA;
-
+    --color-header: #00020A;
+    --color-base: #05060C;
+    
+    --color-primary: #7C3AED;
+    --color-primary-hover: #6D28D9;
+    --color-primary-soft: #8B5CF6;
+    
     --color-text: #E5E7EB;
-    --color-text-soft: #9CA3AF;   
+    --color-text-soft: #9CA3AF;
     --color-text-muted: #6B7280; 
 }
 

@@ -8,9 +8,10 @@ import { CookieJar } from "tough-cookie";
 import { wrapper } from "axios-cookiejar-support";
 import * as cheerio from "cheerio";
 import achelper from "../helpers/activitiesHelpers.js";
-import { loadEnvFile } from "node:process";
-import { join } from "node:path";
-loadEnvFile(join(process.cwd(), ".env.local"));
+import { configDotenv } from "dotenv";
+import { resolve } from "node:path";
+
+configDotenv({ path: resolve("..", ".env.local")})
 
 const lang = "pt_br"
 const jar = new CookieJar();
