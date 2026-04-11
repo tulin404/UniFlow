@@ -27,17 +27,25 @@ export default function App() {
     const [data, setData] = useState(null);
 
     useEffect(() => {
+        const controller = new AbortController();
+
         async function getFullObj() {
             try {
-                const raw = await fetch(`${import.meta.env.VITE_API_URL}`);
+                const raw = await fetch(`${import.meta.env.VITE_API_URL}`, {
+                    signal: controller.signal
+                });
                 const json = await raw.json();
                 setData(json);
             } catch(error) {
-                console.log("Erro na request das atividades:", error);
+                if (error.name !== "AbortError") {
+                    console.log("Erro na request das atividades:", error);
+                };
             };
         };
 
         getFullObj();
+
+        return () => controller.abort();
     }, []);
 
     useEffect(() => {
