@@ -11,7 +11,7 @@ export default function Header({ theme, setTheme }) {
                 <svg className="h-12 xl:h-14" viewBox="14 10 36 44" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><filter id="glow" x="-80%" y="-80%" width="260%" height="260%"><feDropShadow dx="0" dy="0" stdDeviation="2.3" floodColor="#8B5CF6" floodOpacity="0.25"/></filter></defs><path d="M20 16 V36 Q20 48 32 48 Q44 48 44 36 V16" stroke="#8B5CF6" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" filter="url(#glow)"/></svg>
                 <h1 className="font-[satoshi] text-text font-semibold text-5xl xl:text-6xl">niFlow</h1>
             </a>
-            <div id="change-theme-wrapper" className="absolute sm:size-9.5 size-8.5 right-5 translate-y-1/2 bottom-1/2 flex justify-center">
+            <div id="change-theme-wrapper" className="absolute sm:size-9.5 size-8.5 right-5 md:right-10 lg:right-12 translate-y-1/2 bottom-1/2 flex justify-center">
                 <button className="absolute size-full">
                     <SunIcon
                         id="sun"
