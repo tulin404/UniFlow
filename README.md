@@ -12,8 +12,11 @@ Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef
 - Vite
 - Node.js + Express
 - Express session
-- JSON Web Tokens
 - MySQL
 - Redis
+## 💡 FUTURAS ADIÇÕES
+- Quantidade de faltas em cada matéria
+- Anotações por matéria
+- Versão app mobile
 
 !!! 🚧 WIP 🚧 !!!
