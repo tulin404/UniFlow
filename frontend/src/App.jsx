@@ -24,7 +24,15 @@ export default function App() {
     }, [theme]);
 
     // DATA FETCHING
-    const [data, setData] = useState(null);
+    const [data, setData] = useState(() => {
+        const stored = localStorage.getItem("activ");
+        return stored ? JSON.parse(stored) : null;
+    });
+
+    function updateData(newData) {
+        setData(newData);
+        localStorage.setItem("activ", JSON.stringify(newData));
+    };
 
     useEffect(() => {
         const controller = new AbortController();
@@ -35,7 +43,7 @@ export default function App() {
                     signal: controller.signal
                 });
                 const json = await raw.json();
-                setData(json);
+                updateData(json);
             } catch(error) {
                 if (error.name !== "AbortError") {
                     console.log("Erro na request das atividades:", error);

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 // GRID COMPONENT
