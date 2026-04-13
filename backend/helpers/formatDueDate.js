@@ -41,9 +41,9 @@ export default function smartFormat(dueDate) {
     const diffTime = Math.floor(formatted.getTime() - now.getTime())
 
     // SMART FORMATTING
-    if (diffDays === 0) return [`Hoje • ${dueTime}`, diffTime];
-    if (diffDays === 1) return [`Amanhã • ${dueTime}`, diffTime];
-    if (diffDays < 0) return [`Atrasado • ${dueTime}`, diffTime];
+    if (diffDays < 0) return [`Atrasado • ${dueTime}`, diffTime, 0];
+    if (diffDays === 0) return [`Hoje • ${dueTime}`, diffTime, 1];
+    if (diffDays === 1) return [`Amanhã • ${dueTime}`, diffTime, 2];
 
     // FUTURE LESSONS
     const weekday = new Intl.DateTimeFormat("pt-br", {
@@ -57,7 +57,7 @@ export default function smartFormat(dueDate) {
 
     const capWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
 
-    return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime]);
+    return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime, 3]);
 };
 
 console.log(

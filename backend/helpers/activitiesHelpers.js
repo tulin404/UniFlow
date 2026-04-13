@@ -14,14 +14,15 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actId, actName, actLink, dueDate, done, priority) {
+function CreateActivityObj(actId, actName, actLink, dueDate, done, priority, state) {
     return {
         actId: actId,
         actName: actName,
         actLink: actLink,
         dueDate: dueDate,
         done: done,
-        priority: priority
+        priority: priority,
+        state: state
     };
 };
 
@@ -54,13 +55,18 @@ function getDueDateAndPriority(html) {
     };
 };
 
+function sortActArray(actArr) {
+    return actArr.sort((a, b) => a.priority - b.priority);
+};
+
 export default function AcHelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actId, actName, actLink, dueDate, done, priority) => CreateActivityObj(actId, actName, actLink, dueDate, done, priority),
+        CreateActivityObj: (actId, actName, actLink, dueDate, done, priority, state) => CreateActivityObj(actId, actName, actLink, dueDate, done, priority, state),
         getActName: (linkElement) => getActName(linkElement),
         getDueDateAndPriority: (html) => getDueDateAndPriority(html),
-        isDone: (html) => isDone(html)
+        isDone: (html) => isDone(html),
+        sortActArray: (actArr) => sortActArray(actArr)
     };
 };

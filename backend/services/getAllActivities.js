@@ -1,6 +1,7 @@
-/* !!!IMPORTANT
-   FUNCTIONS HERE ARE HIGHLY COUPLED BECAUSE IT SIMULATES A BROWSER.
-   THATS WHY ALL THE FUNCTIONS ARE IN JUST ONE FILE
+/* 
+    !!! IMPORTANT !!!
+    FUNCTIONS HERE ARE HIGHLY COUPLED BECAUSE IT SIMULATES A BROWSER.
+    THATS WHY ALL THE FUNCTIONS ARE IN JUST ONE FILE
 */
 
 import axios from "axios";
@@ -91,20 +92,24 @@ export default async function getAllActivities() {
             const href = $(link).attr("href");
             const raw = await client.get(href);
             const html = raw.data;
+
             const id = parseInt(href.slice(-6));
             const name = helper.getActName(link);
-            // DUEDATE AND PRIORITY
+
+            // DUEDATE, PRIORITY AND STATE
             const smartDateObj = helper.getDueDateAndPriority(html);
             const dueDate = smartDateObj[0];
             const priority = smartDateObj[1];
+            const state = smartDateObj[2];
 
             const done = helper.isDone(html);
             if (name) {
-                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done, priority);
+                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done, priority, state);
                 activitiesArray.push(actObj);
             };
         });
-        const finalObj = helper.CreateActivitiesWithCourse(course.name, activitiesArray);
+        const sortedActArr = helper.sortActArray(activitiesArray);
+        const finalObj = helper.CreateActivitiesWithCourse(course.name, sortedActArr);
         finalArr.push(finalObj);
     };
     return finalArr;
