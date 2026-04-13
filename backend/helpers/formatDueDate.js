@@ -29,8 +29,8 @@ export default function smartFormat(dueDate) {
     const now = new Date();
 
     // DAY WITHOUT HOUR 
-    const dueDay = new Date(formatted.getFullYear(), formatted.getMonth(), formatted.getDay());
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDay());
+    const dueDay = new Date(formatted.getFullYear(), formatted.getMonth(), formatted.getDate());
+    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
 
     const dueTime = new Intl.DateTimeFormat("pt-br", {
         hour: "2-digit",
@@ -43,7 +43,7 @@ export default function smartFormat(dueDate) {
     // SMART FORMATTING
     if (diffDays === 0) return [`Hoje • ${dueTime}`, diffTime];
     if (diffDays === 1) return [`Amanhã • ${dueTime}`, diffTime];
-    if (diffDays < 0) return [`Atrasado • ${time}`, diffTime];
+    if (diffDays < 0) return [`Atrasado • ${dueTime}`, diffTime];
 
     // FUTURE LESSONS
     const weekday = new Intl.DateTimeFormat("pt-br", {
@@ -57,7 +57,7 @@ export default function smartFormat(dueDate) {
 
     const capWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
 
-    return (`${capWeekday}, ${dayAndMonth} • ${dueTime}`);
+    return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime]);
 };
 
 console.log(

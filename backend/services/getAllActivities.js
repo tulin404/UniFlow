@@ -93,10 +93,14 @@ export default async function getAllActivities() {
             const html = raw.data;
             const id = parseInt(href.slice(-6));
             const name = helper.getActName(link);
-            const dueDate = helper.getDueDate(html);
+            // DUEDATE AND PRIORITY
+            const smartDateObj = helper.getDueDateAndPriority(html);
+            const dueDate = smartDateObj[0];
+            const priority = smartDateObj[1];
+
             const done = helper.isDone(html);
             if (name) {
-                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done);
+                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done, priority);
                 activitiesArray.push(actObj);
             };
         });

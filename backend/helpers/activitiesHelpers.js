@@ -1,4 +1,5 @@
 import * as cheerio from "cheerio";
+import smartFormat from "./formatDueDate.js";
 
 const openMsg = "Aberto";
 
@@ -38,18 +39,18 @@ function isDone(html) {
     return ($("td.submissionstatussubmitted").length !== 0);
 };
 
-function getDueDate(html) {
+function getDueDateAndPriority(html) {
     const $ = cheerio.load(html);
     const lastDiv = $("div.activity-dates > div:last-child");
     const allTxt = lastDiv.text();
     const strongTxt = $(lastDiv).find("strong").text();
     const replacedStrong = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
-    
+    const realDate = smartFormat(replacedStrong);
     
     if (replacedStrong.startsWith(openMsg)) {
         return("Data para entrega não definida.")
     } else {
-        return realTxt;
+        return realDate;
     };
 };
 
@@ -59,7 +60,7 @@ export default function AcHelper() {
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
         CreateActivityObj: (actId, actName, actLink, dueDate, done, priority) => CreateActivityObj(actId, actName, actLink, dueDate, done, priority),
         getActName: (linkElement) => getActName(linkElement),
-        getDueDate: (html) => getDueDate(html),
+        getDueDateAndPriority: (html) => getDueDateAndPriority(html),
         isDone: (html) => isDone(html)
     };
 };
