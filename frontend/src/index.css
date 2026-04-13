@@ -15,6 +15,10 @@
     --color-text: #111827;     
     --color-text-soft: #4B5563;
     --color-text-muted: #6B7280;
+
+    --color-card: #F1F5F9;
+    --color-card-hover: #E2E8F0;
+    --color-card-border: rgba(15, 23, 42, 0.06);    
 };
 
 .dark {
@@ -30,7 +34,11 @@
     
     --color-text: #E5E7EB;
     --color-text-soft: #9CA3AF;
-    --color-text-muted: #6B7280; 
+    --color-text-muted: #6B7280;
+
+    --color-card: #111827;
+    --color-card-hover: #1A2332;
+    --color-card-border: rgba(255, 255, 255, 0.06);
 }
 
 header {

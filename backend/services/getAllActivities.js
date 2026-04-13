@@ -7,7 +7,7 @@ import axios from "axios";
 import { CookieJar } from "tough-cookie";
 import { wrapper } from "axios-cookiejar-support";
 import * as cheerio from "cheerio";
-import achelper from "../helpers/activitiesHelpers.js";
+import AcHelper from "../helpers/activitiesHelpers.js";
 import { configDotenv } from "dotenv";
 import { resolve } from "node:path";
 
@@ -16,7 +16,7 @@ configDotenv({ path: resolve("..", ".env.local")})
 const lang = "pt_br"
 const jar = new CookieJar();
 const client = wrapper(axios.create({ jar, withCredentials: true}));
-const helper = achelper();
+const helper = AcHelper();
 
 async function getLoginToken() {
     const response = await client.get('https://ava-grad.unifacef.com.br/login/index.php');

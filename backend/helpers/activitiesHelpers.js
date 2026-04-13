@@ -13,13 +13,14 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actId, actName, actLink, dueDate, done) {
+function CreateActivityObj(actId, actName, actLink, dueDate, done, priority) {
     return {
         actId: actId,
         actName: actName,
         actLink: actLink,
         dueDate: dueDate,
-        done: done
+        done: done,
+        priority: priority
     };
 };
 
@@ -42,19 +43,21 @@ function getDueDate(html) {
     const lastDiv = $("div.activity-dates > div:last-child");
     const allTxt = lastDiv.text();
     const strongTxt = $(lastDiv).find("strong").text();
-    const realTxt = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
-    if (realTxt.startsWith(openMsg)) {
+    const replacedStrong = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
+    
+    
+    if (replacedStrong.startsWith(openMsg)) {
         return("Data para entrega não definida.")
     } else {
         return realTxt;
     };
 };
 
-export default function achelper() {
+export default function AcHelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actId, actName, actLink, dueDate, done) => CreateActivityObj(actId, actName, actLink, dueDate, done),
+        CreateActivityObj: (actId, actName, actLink, dueDate, done, priority) => CreateActivityObj(actId, actName, actLink, dueDate, done, priority),
         getActName: (linkElement) => getActName(linkElement),
         getDueDate: (html) => getDueDate(html),
         isDone: (html) => isDone(html)
