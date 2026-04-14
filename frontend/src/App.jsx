@@ -43,7 +43,9 @@ export default function App() {
                     signal: controller.signal
                 });
                 const json = await raw.json();
-                updateData(json);
+                if (!json.error) {
+                    updateData(json);
+                };
             } catch(error) {
                 if (error.name !== "AbortError") {
                     console.log("Erro na request das atividades:", error);

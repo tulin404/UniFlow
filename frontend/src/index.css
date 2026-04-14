@@ -3,7 +3,7 @@
 
 @theme {
     --color-header: #F9FAFB; 
-    --color-base: #FFFFFF;
+    --color-color-base: #FFFFFF;
     --color-shadow: oklch(0.8 0 0);
     --color-hover-bg: oklch(0.85 0 0 / 0.5);
     --color-active-bg: oklch(0.75 0 0 / 0.5);
@@ -27,7 +27,7 @@
 
 .dark {
     --color-header: #00020A;
-    --color-base: oklch(0.1342 0.0152 274.63);
+    --color-color-base: oklch(0.1342 0.0152 274.63);
     --color-shadow: oklch(0.15 0 0);
     --color-hover-bg: oklch(0.35 0 0 / 0.5);
     --color-active-bg: oklch(0.25 0 0 / 0.5);

@@ -56,6 +56,19 @@ function getDueDateAndPriority(html) {
     };
 };
 
+function filterCourseName(courseName) {
+    const courseFilter = {
+        "ALGORITMO E LÓGICA DE PROGRAMAÇÃO I": "Alg/Lóg. de Prog. I",
+        "FUNDAMENTOS DE PROGRAMAÇÃO E DESENVOLVIMENTO WEB": "Desenvolvimento Web",
+        "COMUNICAÇÃO PROFISSIONAL E ACADÊMICA EM COMPUTAÇÃO": "Comunicação em Comp.",
+        "INTRODUÇÃO À COMPUTAÇÃO E À INTELIGÊNCIA ARTIFICIAL": "Introd. à Comp. e IA",
+        "MATEMÁTICA PARA COMPUTAÇÃO": "Matemática p/ Comp.",
+        "METODOLOGIA DE PESQUISA EM COMPUTAÇÃO": "Met. de Pesq. em Comp."
+    };
+
+    return courseFilter[courseName];
+};
+
 function sortActArray(actArr) {
     return actArr.sort((a, b) => a.priority - b.priority);
 };
@@ -68,6 +81,7 @@ export default function AcHelper() {
         getActName: (linkElement) => getActName(linkElement),
         getDueDateAndPriority: (html) => getDueDateAndPriority(html),
         isDone: (html) => isDone(html),
+        filterCourseName: (courseName) => filterCourseName(courseName),
         sortActArray: (actArr) => sortActArray(actArr)
     };
 };
