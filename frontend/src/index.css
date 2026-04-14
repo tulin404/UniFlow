@@ -13,8 +13,8 @@
     --color-primary-soft: #C4B5FD;
     
     --color-text: #111827;     
-    --color-text-soft: #4B5563;
-    --color-text-muted: #6B7280;
+    --color-text-soft: #374151;  
+    --color-text-muted: #4B5563; 
 
     --color-card: #F1F5F9;
     --color-card-hover: #E2E8F0;
@@ -23,6 +23,18 @@
     --color-card-done: var(--color-green-100);
     --color-card-done-hover: var(--color-green-200);
     --color-card-done-border: var(--color-green-300);
+
+    --color-card-urgent: oklch(0.92 0.05 25);
+    --color-card-urgent-hover: oklch(0.88 0.07 25);
+    --color-card-urgent-border: oklch(0.75 0.08 25);
+
+    --color-card-warn: oklch(0.95 0.04 85);
+    --color-card-warn-hover: oklch(0.90 0.06 85);
+    --color-card-warn-border: oklch(0.80 0.07 85);
+
+    --color-card-risk: oklch(0.93 0.04 240);
+    --color-card-risk-hover: oklch(0.88 0.06 240);
+    --color-card-risk-border: oklch(0.78 0.07 240);
 };
 
 .dark {
@@ -37,8 +49,8 @@
     --color-primary-soft: #8B5CF6;
     
     --color-text: #E5E7EB;
-    --color-text-soft: #9CA3AF;
-    --color-text-muted: #6B7280;
+    --color-text-soft: #D1D5DB;   
+    --color-text-muted: #9CA3AF;  
 
     --color-card: #111827;
     --color-card-hover: #1A2332;
@@ -47,6 +59,18 @@
     --color-card-done: oklch(0.22 0.04 160);
     --color-card-done-hover: oklch(0.28 0.05 160);
     --color-card-done-border: oklch(0.35 0.04 160);
+
+    --color-card-urgent: oklch(0.28 0.06 25);
+    --color-card-urgent-hover: oklch(0.34 0.08 25);
+    --color-card-urgent-border: oklch(0.45 0.07 25);
+
+    --color-card-warn: oklch(0.30 0.05 85);
+    --color-card-warn-hover: oklch(0.36 0.07 85);
+    --color-card-warn-border: oklch(0.48 0.06 85);
+
+    --color-card-risk: oklch(0.30 0.05 240);
+    --color-card-risk-hover: oklch(0.36 0.07 240);
+    --color-card-risk-border: oklch(0.48 0.06 240);
 }
 
 header {
