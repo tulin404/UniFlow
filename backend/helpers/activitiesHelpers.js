@@ -14,7 +14,7 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, priority, state) {
+function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state) {
     return {
         actId: actId,
         actCourse: actCourse, // FOR DONE LESSONS
@@ -22,6 +22,7 @@ function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, pr
         actLink: actLink,
         dueDate: dueDate,
         done: done,
+        lastMod: lastMod ? lastMod : [],
         priority: priority,
         state: state
     };
@@ -39,6 +40,16 @@ function getActName(linkElement) {
 function isDone(html) {
     const $ = cheerio.load(html);
     return ($("td.submissionstatussubmitted").length !== 0);
+};
+
+function getLastMod(html) {
+    const $ = cheerio.load(html);
+    const lastModDate = $("td.cell.c1.lastcol").filter((index, element) => {
+        const classes = $(element).attr("class")?.trim().split(/\s+/) || [];
+        return classes.length === 3 && classes.includes("cell") && classes.includes("c1") && classes.includes("lastcol");
+    });
+
+    return lastModDate.contents().first().text().trim();
 };
 
 function getDueDateAndPriority(html) {
@@ -77,8 +88,9 @@ export default function AcHelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actId, actCourse, actName, actLink, dueDate, done, priority, state) => CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, priority, state),
+        CreateActivityObj: (actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state) => CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state),
         getActName: (linkElement) => getActName(linkElement),
+        getLastMod: (html) => getLastMod(html),
         getDueDateAndPriority: (html) => getDueDateAndPriority(html),
         isDone: (html) => isDone(html),
         filterCourseName: (courseName) => filterCourseName(courseName),
