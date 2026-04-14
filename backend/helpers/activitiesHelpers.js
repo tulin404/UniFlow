@@ -14,9 +14,10 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actId, actName, actLink, dueDate, done, priority, state) {
+function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, priority, state) {
     return {
         actId: actId,
+        actCourse: actCourse, // FOR DONE LESSONS
         actName: actName,
         actLink: actLink,
         dueDate: dueDate,
@@ -63,7 +64,7 @@ export default function AcHelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actId, actName, actLink, dueDate, done, priority, state) => CreateActivityObj(actId, actName, actLink, dueDate, done, priority, state),
+        CreateActivityObj: (actId, actCourse, actName, actLink, dueDate, done, priority, state) => CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, priority, state),
         getActName: (linkElement) => getActName(linkElement),
         getDueDateAndPriority: (html) => getDueDateAndPriority(html),
         isDone: (html) => isDone(html),

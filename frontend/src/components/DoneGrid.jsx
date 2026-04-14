@@ -1,25 +1,25 @@
 import GridTitle from "./GridTitle";
 import LessonElement from "./LessonElement";
 
-export default function DoneGrid({ name, data, active, setActive }) {
+export default function DoneGrid({ name, data, active, setActive, theme }) {
 
-    const elements = data?.map(piece => piece.activities)?.filter(activ => activ.length > 0)?.flat()?.filter(item => item.done) || [];
+    const elements = Array.isArray(data) ? data?.map(piece => piece.activities)?.filter(activ => activ.length > 0)?.flat()?.filter(item => item.done) : [];
 
-    if (!data) {
+    if (!Array.isArray(data)) {
         return (
             <section id="done" className="py-[4%] px-[8%]">
                 <GridTitle name={name} active={active} setActive={setActive} />
-                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
+                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-fr justify-center items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
                     <div>Loading...</div>
                 </div>
             </section>
         )
     } else {
         return (
-            <section id="done" className="py-[4%] px-[8%] gap-2 flex flex-col">
+            <section id="done" className="py-[4%] px-[8%] gap-4 flex flex-col">
                 <GridTitle name={name} active={active} setActive={setActive} />
-                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] justify-center items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
-                    {elements.map(element => <LessonElement key={element.actId} actId={element.actId} />)}
+                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] justify-center items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
+                    {elements.map(element => <LessonElement key={element.actId} theme={theme} actId={element.actId} actName={element.actName} done={element.done} />)}
                 </div>
             </section>
         );

@@ -18,7 +18,11 @@
 
     --color-card: #F1F5F9;
     --color-card-hover: #E2E8F0;
-    --color-card-border: rgba(15, 23, 42, 0.06);    
+    --color-card-border: rgba(15, 23, 42, 0.06);
+    
+    --color-card-done: var(--color-green-100);
+    --color-card-done-hover: var(--color-green-200);
+    --color-card-done-border: var(--color-green-300);
 };
 
 .dark {
@@ -39,6 +43,10 @@
     --color-card: #111827;
     --color-card-hover: #1A2332;
     --color-card-border: rgba(255, 255, 255, 0.06);
+
+    --color-card-done: oklch(0.22 0.04 160);
+    --color-card-done-hover: oklch(0.28 0.05 160);
+    --color-card-done-border: oklch(0.35 0.04 160);
 }
 
 header {

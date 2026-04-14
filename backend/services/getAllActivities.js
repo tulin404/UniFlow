@@ -74,7 +74,6 @@ async function getCourses() {
             coursesArray.push(object);
         };
     };
-    
     return(coursesArray);
 };
 
@@ -94,7 +93,8 @@ export default async function getAllActivities() {
             const html = raw.data;
 
             const id = parseInt(href.slice(-6));
-            const name = helper.getActName(link);
+            const courseName = course.name.slice(8); // FOR DONE LESSONS EASY ACCESS
+            const actName = helper.getActName(link);
 
             // DUEDATE, PRIORITY AND STATE
             const smartDateObj = helper.getDueDateAndPriority(html);
@@ -103,13 +103,13 @@ export default async function getAllActivities() {
             const state = smartDateObj[2];
 
             const done = helper.isDone(html);
-            if (name) {
-                const actObj = helper.CreateActivityObj(id, name, href, dueDate, done, priority, state);
+            if (actName) {
+                const actObj = helper.CreateActivityObj(id, courseName, actName, href, dueDate, done, priority, state);
                 activitiesArray.push(actObj);
             };
         });
         const sortedActArr = helper.sortActArray(activitiesArray);
-        const finalObj = helper.CreateActivitiesWithCourse(course.name, sortedActArr);
+        const finalObj = helper.CreateActivitiesWithCourse(course.name.slice(8), sortedActArr);
         finalArr.push(finalObj);
     };
     return finalArr;

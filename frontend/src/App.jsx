@@ -67,7 +67,7 @@ export default function App() {
     return (
         <>
             <Header setTheme={setTheme} theme={theme} />
-            <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} />
+            <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} />
         </>
     )
 };
