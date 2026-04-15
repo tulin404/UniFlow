@@ -78,7 +78,7 @@ function filterCourseName(courseName) {
         "METODOLOGIA DE PESQUISA EM COMPUTAÇÃO": "Met. de Pesq. em Comp."
     };
 
-    return courseFilter[courseName];
+    return courseFilter[courseName] ? courseFilter[courseName] : courseName;
 };
 
 function sortActArray(actArr) {
