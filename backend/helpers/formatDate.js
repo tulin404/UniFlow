@@ -6,7 +6,7 @@ function formatDate(rawDate) {
     };
 
     const regex = /(\d{1,2}) (\w+)\. (\d{4}), (\d{2}):(\d{2})/
-    const [, day, month, year, hour, minute] = replacedDue.match(regex);
+    const [, day, month, year, hour, minute] = rawDate.match(regex);
 
     // GET TIME
     const date = new Date(
@@ -21,7 +21,7 @@ function formatDate(rawDate) {
 };
 
 
-export default function smartFormat(dueDate) {
+export function smartDueFormat(dueDate) {
     const formatted = formatDate(dueDate);
     if (!formatted) return dueDate;
 
@@ -58,3 +58,7 @@ export default function smartFormat(dueDate) {
 
     return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime, 3]);
 };
+
+export function smartLastModFormat() {
+
+}

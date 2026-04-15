@@ -81,40 +81,46 @@ export default async function getAllActivities() {
     const courses = await getCourses();
     const finalArr = [];
     for (const course of courses) {
-        const activitiesArray = [];
         const raw = await client.get(`${course.link}&lang=${lang}`);
         const html = raw.data;
         const $ = cheerio.load(html);
         const links = $("a[href*='assign']");
-
-        links.each(async (index, link) => {
-            const href = $(link).attr("href");
-            const raw = await client.get(href);
-            const html = raw.data;
-
-            const id = parseInt(href.slice(-6));
-            const courseNameRaw = course.name.slice(8);
-            const courseNameFiltered = helper.filterCourseName(courseNameRaw); // FOR DONE LESSONS EASY ACCESS
-            const actName = helper.getActName(link);
-
-
-            // DUEDATE, PRIORITY AND STATE
-            const smartDateObj = helper.getDueDateAndPriority(html);
-            const dueDate = smartDateObj[0];
-            const priority = smartDateObj[1];
-            const state = smartDateObj[2];
-
-            const done = helper.isDone(html);
-            let lastMod;
-            if (done) {
-                lastMod = helper.getLastMod(html);
-            };
-            if (actName) {
+        
+        const activitiesArray = await Promise.all(
+            links.map(async (index, link) => {
+                const href = $(link).attr("href");
+                const raw = await client.get(href);
+                const html = raw.data;
+    
+                const id = parseInt(href.slice(-6));
+                const actName = helper.getActName(link);
+    
+                // DUEDATE, PRIORITY AND STATE
+                const smartDateObj = helper.getDueDateAndPriority(html);
+                const dueDate = smartDateObj[0];
+                const priority = smartDateObj[1];
+                const state = smartDateObj[2];
+    
+                const done = helper.isDone(html);
+                let lastMod;
+                let courseNameFiltered;
+                if (done) {
+                    const courseNameRaw = course.name.slice(8);
+                    courseNameFiltered = helper.filterCourseName(courseNameRaw); // FOR DONE LESSONS EASY ACCESS
+                    lastMod = helper.getLastMod(html);
+                };
+                
+                if (!actName) return null;
+    
+                
                 const actObj = helper.CreateActivityObj(id, courseNameFiltered, actName, href, dueDate, done, lastMod, priority, state);
-                activitiesArray.push(actObj);
-            };
-        });
-        const sortedActArr = helper.sortActArray(activitiesArray);
+                return actObj;
+                
+            })
+        );
+
+        const filtered = activitiesArray.filter(Boolean);
+        const sortedActArr = helper.sortActArray(filtered);
         const finalObj = helper.CreateActivitiesWithCourse(course.name.slice(8), sortedActArr);
         finalArr.push(finalObj);
     };

@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import smartFormat from "./formatDate.js";
+import { smartDueFormat, smartLastModFormat } from "./formatDate.js";
 
 const openMsg = "Aberto";
 
@@ -17,7 +17,7 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
 function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state) {
     return {
         actId: actId,
-        actCourse: actCourse, // FOR DONE LESSONS
+        actCourse: actCourse ? actCourse : "", // FOR DONE LESSONS
         actName: actName,
         actLink: actLink,
         dueDate: dueDate,
@@ -58,8 +58,8 @@ function getDueDateAndPriority(html) {
     const allTxt = lastDiv.text();
     const strongTxt = $(lastDiv).find("strong").text();
     const replacedStrong = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
-    const replacedDue = rawDate.replace("Vencimento: ", "");
-    const realDate = smartFormat(replacedDue);
+    const replacedDue = replacedStrong.replace("Vencimento: ", "");
+    const realDate = smartDueFormat(replacedDue);
     
     if (replacedStrong.startsWith(openMsg)) {
         return("Data para entrega não definida.")
