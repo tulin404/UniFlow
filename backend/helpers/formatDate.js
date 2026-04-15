@@ -1,5 +1,4 @@
-function formatDueDate(dueDate) {
-    const replacedDue = dueDate.replace("Vencimento: ", "");
+function formatDate(rawDate) {
     // MONTHS
     const months = {
         jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, 
@@ -23,7 +22,7 @@ function formatDueDate(dueDate) {
 
 
 export default function smartFormat(dueDate) {
-    const formatted = formatDueDate(dueDate);
+    const formatted = formatDate(dueDate);
     if (!formatted) return dueDate;
 
     const now = new Date();
@@ -59,7 +58,3 @@ export default function smartFormat(dueDate) {
 
     return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime, 3]);
 };
-
-console.log(
-    smartFormat("quarta-feira, 15 abr. 2026, 18:00")
-)

@@ -1,5 +1,5 @@
 import * as cheerio from "cheerio";
-import smartFormat from "./formatDueDate.js";
+import smartFormat from "./formatDate.js";
 
 const openMsg = "Aberto";
 
@@ -58,7 +58,8 @@ function getDueDateAndPriority(html) {
     const allTxt = lastDiv.text();
     const strongTxt = $(lastDiv).find("strong").text();
     const replacedStrong = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
-    const realDate = smartFormat(replacedStrong);
+    const replacedDue = rawDate.replace("Vencimento: ", "");
+    const realDate = smartFormat(replacedDue);
     
     if (replacedStrong.startsWith(openMsg)) {
         return("Data para entrega não definida.")
