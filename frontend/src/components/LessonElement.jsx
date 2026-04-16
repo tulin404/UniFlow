@@ -1,9 +1,8 @@
-import { ExclamationCircleIcon } from "@heroicons/react/24/solid";
-import { CheckCircleIcon } from "@heroicons/react/24/solid";
+import { ExclamationCircleIcon, CheckCircleIcon } from "@heroicons/react/24/solid";
 
 export default function LessonElement({ actCourse, actName, actLink, dueDate, done, status, theme }) {
     const BadgeIcon = () => {
-        if (done) return <div className="flex justify-center"><CheckCircleIcon className={`${theme === "dark" ? "text-primary" : "text-green-500"} size-7 md:size-7.5 stroke-[1.5]`} /></div>
+        if (done) return <div className="flex justify-center"><CheckCircleIcon className={`${theme === "dark" ? "text-done-icon" : "text-green-500"} size-7 md:size-7.5 stroke-[1.5]`} /></div>
         if (status === 0) return <div className="flex justify-center items-center"><ExclamationCircleIcon className="text-red-500 size-6 md:size-6.5 stroke-[1.5]" /></div>
     };
 
