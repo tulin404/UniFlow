@@ -49,7 +49,9 @@ function getLastMod(html) {
         return classes.length === 3 && classes.includes("cell") && classes.includes("c1") && classes.includes("lastcol");
     });
 
-    return lastModDate.contents().first().text().trim();
+    const lastModRaw = lastModDate.contents().first().text().trim();
+    const lastModFormatted = smartLastModFormat(lastModRaw);
+    return lastModFormatted;
 };
 
 function getDueDateAndPriority(html) {

@@ -59,6 +59,32 @@ export function smartDueFormat(dueDate) {
     return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime, 3]);
 };
 
-export function smartLastModFormat() {
+export function smartLastModFormat(lastModDate) {
+    const weekDays ={
+        0: "Seg", 1: "Ter", 2: "Qua", 3: "Qui", 4: "Sex", 5: "Sáb", 6: "Dom"
+    };
 
-}
+    const months = {
+        0: "jan", 1: "fev", 2: "mar", 3: "abr", 4: "mai", 5: "jun", 
+        6: "jul", 7: "ago", 8: "set", 9: "out", 10: "nov", 11: "dez"
+    };
+
+    const now = new Date();
+    const lastModTime = formatDate(lastModDate);
+
+    const diffMs = Math.abs(now - lastModTime);
+    const diffHours = diffMs / (1000 * 60 * 60);
+
+    if (diffHours < 24){
+        return (`Há ${Math.ceil(diffHours)} horas.`);
+    } else {
+        if (diffHours <= 72) {
+            const days = Math.floor(diffHours / (24));
+            const hours = Math.ceil((diffHours % 24) * 60);
+            
+            return (`Há ${days} dias e ${hours} horas.`);
+        } else {
+            return (`${weekDays[lastModTime.getDay()]}, ${lastModTime.getDate()} de ${months[lastModTime.getMonth()]}, às ${lastModTime.getHours()}:${lastModTime.getMinutes()} horas`)
+        };
+    };
+};

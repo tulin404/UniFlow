@@ -102,8 +102,8 @@ export default async function getAllActivities() {
                 const state = smartDateObj[2];
     
                 const done = helper.isDone(html);
-                let lastMod;
                 let courseNameFiltered;
+                let lastMod;
                 if (done) {
                     const courseNameRaw = course.name.slice(8);
                     courseNameFiltered = helper.filterCourseName(courseNameRaw); // FOR DONE LESSONS EASY ACCESS
@@ -111,8 +111,7 @@ export default async function getAllActivities() {
                 };
                 
                 if (!actName) return null;
-    
-                
+
                 const actObj = helper.CreateActivityObj(id, courseNameFiltered, actName, href, dueDate, done, lastMod, priority, state);
                 return actObj;
                 
