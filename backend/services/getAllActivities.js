@@ -85,6 +85,7 @@ export default async function getAllActivities() {
         const html = raw.data;
         const $ = cheerio.load(html);
         const links = $("a[href*='assign']");
+        const courseNameFiltered = helper.filterCourseName(course.name.slice(8));
         
         const activitiesArray = await Promise.all(
             links.map(async (index, link) => {
@@ -102,11 +103,8 @@ export default async function getAllActivities() {
                 const state = smartDateObj[2];
     
                 const done = helper.isDone(html);
-                let courseNameFiltered;
                 let lastMod;
                 if (done) {
-                    const courseNameRaw = course.name.slice(8);
-                    courseNameFiltered = helper.filterCourseName(courseNameRaw); // FOR DONE LESSONS EASY ACCESS
                     lastMod = helper.getLastMod(html);
                 };
                 
@@ -120,7 +118,7 @@ export default async function getAllActivities() {
 
         const filtered = activitiesArray.filter(Boolean);
         const sortedActArr = helper.sortActArray(filtered);
-        const finalObj = helper.CreateActivitiesWithCourse(course.name.slice(8), sortedActArr);
+        const finalObj = helper.CreateActivitiesWithCourse(courseNameFiltered, sortedActArr);
         finalArr.push(finalObj);
     };
     return finalArr;
