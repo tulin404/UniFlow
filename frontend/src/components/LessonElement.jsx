@@ -13,7 +13,7 @@ export default function LessonElement({ actCourse, actName, actLink, dueDate, do
                 <span className="flex-1 md:text-lg">{actName}</span>
                 <BadgeIcon />
             </h3>
-            {done ? <h4 className="act-course text-sm md:text-base text-text-muted font-medium">{actCourse}</h4> : <div className="flex items-center justify-center gap-1"><ExclamationCircleIcon className="text-red-600 size-5 md:size-5.5 stroke-[1.5]" /><span className="text-red-400 font-medium">{dueDate}</span></div>}
+            {done ? <h4 className="act-course text-sm md:text-base text-text-muted font-medium italic">{actCourse}</h4> : <div className="flex items-center justify-center gap-1"><ExclamationCircleIcon className="text-red-600 size-5 md:size-5.5 stroke-[1.5]" /><span className="text-red-400 font-medium">{dueDate}</span></div>}
         </article>
     );
 };

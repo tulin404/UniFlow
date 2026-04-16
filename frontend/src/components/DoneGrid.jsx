@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import GridTitle from "./GridTitle";
 import LessonElement from "./LessonElement";
 
-export default function DoneGrid({ name, data, active, setActive, theme }) {
-
-    const [limit, setLimit] = useState(4);
+export default function DoneGrid({ name, data, active, setActive, theme, limit, setLimit }) {
 
     useEffect(() => {
         function handleResize() {
