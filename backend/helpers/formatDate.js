@@ -84,7 +84,9 @@ export function smartLastModFormat(lastModDate) {
             
             return (`Há ${days} dias e ${hours} horas.`);
         } else {
-            return (`${weekDays[lastModTime.getDay()]}, ${lastModTime.getDate()} de ${months[lastModTime.getMonth()]}, às ${lastModTime.getHours()}:${lastModTime.getMinutes()} horas`)
+            const hours = lastModTime.getHours().toString().padStart(2, "0");
+            const minutes = lastModTime.getMinutes().toString().padStart(2, "0");
+            return (`${weekDays[lastModTime.getDay()]}, ${lastModTime.getDate()} de ${months[lastModTime.getMonth()]}, às ${hours}:${minutes} horas`)
         };
     };
 };
