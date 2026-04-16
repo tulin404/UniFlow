@@ -28,7 +28,7 @@ export default function DoneGrid({ name, data, active, setActive, theme, limit, 
         return (
             <section id="done" className="py-[4%] px-[8%]">
                 <GridTitle name={name} active={active} setActive={setActive} />
-                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-fr justify-center items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
+                <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-fr place-items-center gap-4 overflow-hidden transition-[max-height] duration-200 ${active ? "max-h-250" : "max-h-0"}`}>
                     <div>Loading...</div>
                 </div>
             </section>
