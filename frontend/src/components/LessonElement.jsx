@@ -8,7 +8,7 @@ export default function LessonElement({ actCourse, actName, actLink, dueDate, do
     };
 
     return (
-        <article className={`${done ? "opacity-70 bg-card-done border-card-done-border hover:bg-card-done-hover" : "opacity-100 bg-card hover:bg-card-hover border-card-border gap-2"} flex flex-col font-[Inter] transition-all duration-200 rounded-md border-2 px-4 py-2 gap-2 h-min`}>
+        <article className={`${done ? "opacity-70 bg-card-done border-card-done-border hover:bg-card-done-hover" : "opacity-100 bg-card hover:bg-card-hover border-card-border gap-2"} flex flex-col font-[Inter] transition-all duration-200 rounded-md border-2 px-4 py-2 gap-2 h-full`}>
             <h3 className="act-title text-text flex gap-2.5 font-semibold">
                 <span className="flex-1 md:text-lg">{actName}</span>
                 <BadgeIcon />

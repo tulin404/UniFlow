@@ -77,7 +77,7 @@ function filterCourseName(courseName) {
         "COMUNICAÇÃO PROFISSIONAL E ACADÊMICA EM COMPUTAÇÃO": "Comunicação em Comp.",
         "INTRODUÇÃO À COMPUTAÇÃO E À INTELIGÊNCIA ARTIFICIAL": "Introd. à Comp. e IA",
         "MATEMÁTICA PARA COMPUTAÇÃO": "Matemática p/ Comp.",
-        "METODOLOGIA DE PESQUISA EM COMPUTAÇÃO": "Met. de Pesq. em Comp."
+        "METODOLOGIA DE PESQUISA EM COMPUTAÇÃO I": "Met. de Pesq. em Comp."
     };
 
     return courseFilter[courseName] ? courseFilter[courseName] : courseName;
