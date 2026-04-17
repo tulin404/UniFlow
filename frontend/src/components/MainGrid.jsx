@@ -17,7 +17,7 @@ export default function MainGrid({ name, data, active, setActive, theme, limit }
         return (
             <main className="py-[4%] px-[8%] gap-4 flex flex-col">
                 <GridTitle name={name} active={active} setActive={setActive} />
-                <section className={`${active ? "max-h-250" : "max-h-0"} transition-[max-height] duration-200 overflow-hidden flex flex-col gap-4 pt-2`}>
+                <section className={`${active ? "max-h-250" : "max-h-0"} transition-[max-height] duration-200 overflow-hidden flex flex-col gap-2 sm:gap-4 pt-2`}>
                     {data.map((obj, index) => {
                         return(
                             <CourseElement key={index} obj={obj} limit={limit} />

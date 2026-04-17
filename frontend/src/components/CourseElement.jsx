@@ -15,7 +15,7 @@ export default function CourseElement({ obj, index, limit }) {
         return(
             <>
                 <CourseTitle name={obj.courseName} active={active} setActive={setActive} />
-                <div className={`grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 overflow-hidden transition-[max-height] duration-200 pt-2 ${active ? "max-h-100" : "max-h-0"}`}>
+                <div className={`grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 overflow-hidden transition-[max-height] duration-200 mt-1 mb-2 sm:mb-2 sm:mb-4 ${active ? "max-h-100" : "max-h-0"}`}>
                     {activities.map(activity => <LessonCard key={activity.actId} actName={obj.actName}  />)}
                 </div>
             </>
