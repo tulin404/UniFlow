@@ -65,12 +65,12 @@ export default function App() {
     // ARROW EFFECT
     const [doneActive, setDoneActive] = useState(false);
     const [mainActive, setMainActive] = useState(false);
-    const [limit, setLimit] = useState(4);
+    const [doneLimit, setDoneLimit] = useState(4);
 
     return (
         <>
             <Header setTheme={setTheme} theme={theme} />
-            <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={limit} setLimit={setLimit} />
+            <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={doneLimit} setLimit={setDoneLimit} />
         </>
     )
 };

@@ -12,6 +12,8 @@
 
 ### O **_UniFlow_** organiza suas lições e datas da faculdade de maneira simples, rápida e confiável.
 Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef. É uma solução confiável e pensada para os que não gostam da parte visual do Moodle.
+
+O _Uniflow_ entrega aquilo que você quer saber, na hora que você quer saber, sem precisar passar tempo procurando. Entrou, viu, fez. Produtividade e praticidade.
 ## ✨ Features
 - Organiza todas as suas atividades de maneira visualmente agradável.
 - Feito com Web-Scraping de maneira totalmente legal.
@@ -25,6 +27,10 @@ Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef
 - Express session
 - PostgreSQL
 - Redis
+## ❓ Como usar
+- Entre no site do UniFlow
+- Preencha seu login e senha da faculdade
+- Comece a usar e encontre tudo que você precisa saber sem precisar entrar em várias páginas! 
 ## 💡 FUTURAS ADIÇÕES
 - Quantidade de faltas em cada matéria
 - Anotações por matéria
