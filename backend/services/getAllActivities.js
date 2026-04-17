@@ -93,7 +93,7 @@ export default async function getAllActivities() {
                 const raw = await client.get(href);
                 const html = raw.data;
     
-                const id = parseInt(href.slice(-6));
+                const id = parseInt(new URL(href).searchParams.get("id"));
                 const actName = helper.getActName(link);
     
                 // DUEDATE, PRIORITY AND STATE
