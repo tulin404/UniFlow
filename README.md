@@ -23,7 +23,7 @@ Esse projeto foi feito para sistemas Moodle e voltado para o sistema da UniFacef
 - Vite
 - Node.js + Express
 - Express session
-- MySQL
+- PostgreSQL
 - Redis
 ## 💡 FUTURAS ADIÇÕES
 - Quantidade de faltas em cada matéria
