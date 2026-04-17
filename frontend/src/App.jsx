@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "./components/Header";
 import DoneGrid from "./components/DoneGrid";
+import MainGrid from "./components/MainGrid";
 
 export default function App() {
 
@@ -71,6 +72,7 @@ export default function App() {
         <>
             <Header setTheme={setTheme} theme={theme} />
             <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={doneLimit} setLimit={setDoneLimit} />
+            <MainGrid name="Abertas" data={data} active={mainActive} setActive={setMainActive} theme={theme} limit={doneLimit}/>
         </>
     )
 };

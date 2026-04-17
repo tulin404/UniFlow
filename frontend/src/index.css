@@ -23,19 +23,22 @@
     --color-card-done: var(--color-green-100);
     --color-card-done-hover: var(--color-green-200);
     --color-card-done-border: var(--color-green-300);
-    --color-done-icon: oklch(0.65 0.10 160);
+    --color-done-icon: var(--color-green-500);
 
     --color-card-urgent: oklch(0.92 0.05 25);
     --color-card-urgent-hover: oklch(0.88 0.07 25);
     --color-card-urgent-border: oklch(0.75 0.08 25);
+    --color-urgent-icon: oklch(0.65 0.14 25);
 
     --color-card-warn: oklch(0.95 0.04 85);
     --color-card-warn-hover: oklch(0.90 0.06 85);
     --color-card-warn-border: oklch(0.80 0.07 85);
+    --color-warn-icon: oklch(0.70 0.12 85);
 
     --color-card-risk: oklch(0.93 0.04 240);
     --color-card-risk-hover: oklch(0.88 0.06 240);
     --color-card-risk-border: oklch(0.78 0.07 240);
+    --color-risk-icon: oklch(0.65 0.12 240);
 
     --color-skeleton: oklch(0.93 0.01 274);
     --color-skeleton-highlight: oklch(0.97 0.005 274);
@@ -63,18 +66,22 @@
     --color-card-done: oklch(0.22 0.04 160);
     --color-card-done-hover: oklch(0.28 0.05 160);
     --color-card-done-border: oklch(0.35 0.04 160);
+    --color-done-icon: oklch(0.75 0.12 160);
 
     --color-card-urgent: oklch(0.28 0.06 25);
     --color-card-urgent-hover: oklch(0.34 0.08 25);
     --color-card-urgent-border: oklch(0.45 0.07 25);
+    --color-urgent-icon: oklch(0.75 0.16 25);
 
     --color-card-warn: oklch(0.30 0.05 85);
     --color-card-warn-hover: oklch(0.36 0.07 85);
     --color-card-warn-border: oklch(0.48 0.06 85);
+    --color-warn-icon: oklch(0.78 0.14 85);
 
     --color-card-risk: oklch(0.30 0.05 240);
     --color-card-risk-hover: oklch(0.36 0.07 240);
     --color-card-risk-border: oklch(0.48 0.06 240);
+    --color-risk-icon: oklch(0.75 0.14 240);
 
     --color-skeleton: oklch(0.18 0.01 274);
     --color-skeleton-highlight: oklch(0.22 0.015 274);

@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/outline"
 
 // GRID COMPONENT
 export default function GridTitle({ name, active, setActive }) {
+
     return (
         <div className="title flex items-center justify-between sm:justify-start text-text">
             <button onClick={() => setActive(!active)} className="flex group gap-1 sm:gap-3 items-center justify-center font-semibold font-[Inter]">
