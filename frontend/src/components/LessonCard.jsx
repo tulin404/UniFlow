@@ -39,22 +39,22 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
             bg: "bg-card",
             hover: "hover:bg-card-hover",
             border: "border-card-border",
-            text: "text-text",
+            text: "text-text-soft",
         }
     };
 
     const renderBagdeIcon = () => {
         switch (state) {
             case 0:
-                return <div className="flex justify-center"><CheckCircleIcon className="text-done-icon size-7 md:size-7.5 stroke-[1.5]" /></div>
+                return <div className="flex justify-start"><CheckCircleIcon className="text-done-icon size-7 md:size-7.5 stroke-[1.5]" /></div>
             case 1:
-                return <div className="flex justify-center"><ExclamationCircleIcon className="text-urgent-icon size-5 md:size-5.5 stroke-[1.5]" /></div>
+                return <div className="flex justify-start"><ExclamationCircleIcon className="text-urgent-icon size-5 md:size-5.5 stroke-[1.5]" /></div>
             case 2:
-                return <div className="flex justify-center"><ExclamationTriangleIcon className="text-warn-icon size-5 md:size-5.5 stroke-[1.5]" /></div>
+                return <div className="flex justify-start"><ExclamationTriangleIcon className="text-warn-icon size-5 md:size-5.5 stroke-[1.5]" /></div>
             case 3:
-                return <div className="flex justify-center"><ClockIcon className="text-text size-5 md:size-5.5 stroke-[1.5]" /></div>
+                return <div className="flex justify-start"><ClockIcon className="text-text-soft size-5 md:size-5.5 stroke-[1.5]" /></div>
             default:
-                return <div className="flex justify-center"><CheckCircleIcon className="text-done-icon size-6 md:size-6.5 stroke-[1.5]" /></div>
+                return <div className="flex justify-start"><CheckCircleIcon className="text-done-icon size-6 md:size-6.5 stroke-[1.5]" /></div>
             
         };
     };
@@ -69,7 +69,7 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
                     <span className="flex-1 md:text-lg font-bold">{actName}</span>
                     {state !== 3 ? renderBagdeIcon() : null}
                 </h3>
-                {done ? <h5 className="act-course text-sm md:text-base text-text-muted font-medium italic">{actCourse}</h5> : <div className="flex items-center justify-center gap-1.5 md:gap-2">{renderBagdeIcon()}<span className={`${styles.text} italic font-medium`}>{dueDate}</span></div>}
+                {done ? <h5 className="act-course text-sm md:text-base text-text-muted font-medium italic">{actCourse}</h5> : <div className="flex items-center justify-start gap-1.5 md:gap-2">{renderBagdeIcon()}<span className={`${styles.text} italic font-medium`}>{dueDate}</span></div>}
                 {done && <h4 className="font-[Inter] font-semibold text-sm md:text-base text-text-soft">{lastMod}</h4>}
             </article>
         </a>

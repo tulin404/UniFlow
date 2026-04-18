@@ -100,12 +100,13 @@ export default async function getAllActivities() {
                 const smartDateObj = helper.getDueDateAndPriority(html);
                 const dueDate = smartDateObj[0];
                 const priority = smartDateObj[1];
-                const state = smartDateObj[2];
+                let state = smartDateObj[2];
     
                 const done = helper.isDone(html);
                 let lastMod;
                 if (done) {
                     lastMod = helper.getLastMod(html);
+                    state = -1;
                 };
                 
                 if (!actName) return null;
