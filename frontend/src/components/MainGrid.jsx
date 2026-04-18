@@ -1,6 +1,7 @@
 import GridTitle from "./GridTitle";
 import CourseTitle from "./CourseTitle";
 import CourseElement from "./CourseElement";
+import LessonSkeleton from "./LessonSkeleton";
 
 export default function MainGrid({ name, data, active, setActive, theme, limit }) {
 
