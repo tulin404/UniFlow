@@ -71,6 +71,7 @@ function getDueDateAndPriority(html) {
 };
 
 function filterCourseName(courseName) {
+
     const courseFilter = {
         "ALGORITMO E LÓGICA DE PROGRAMAÇÃO I": "Alg/Lóg. de Prog. I",
         "FUNDAMENTOS DE PROGRAMAÇÃO E DESENVOLVIMENTO WEB": "Desenvolvimento Web",
@@ -80,7 +81,7 @@ function filterCourseName(courseName) {
         "METODOLOGIA DE PESQUISA EM COMPUTAÇÃO I": "Met. de Pesq. em Comp."
     };
 
-    return courseFilter[courseName] ? courseFilter[courseName] : courseName;
+    return courseFilter[courseName.toUpperCase()] ? courseFilter[courseName.toUpperCase()] : courseName;
 };
 
 function sortActArray(actArr) {
