@@ -79,8 +79,8 @@ export function smartLastModFormat(lastModDate) {
         return (`Há ${Math.ceil(diffHours)} horas.`);
     } else {
         if (diffHours <= 72) {
-            const days = Math.floor(diffHours / (24));
-            const hours = Math.ceil((diffHours % 24) * 60);
+            const days = Math.floor(diffHours / 24);
+            const hours = Math.floor(diffHours % 24);
             
             return (`Há ${days} dias e ${hours} horas.`);
         } else {
