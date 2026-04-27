@@ -10,10 +10,10 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
             if (state === 0) return "card-urgent";
             if (state === 1) return "card-warn";
             if (state === 2) return "card-risk";
-            return "card";
+            if (state === 3) return "card"
+            return "card-done";
         }
     }; 
-
 
     const badgeStyles = {
         "card-done": {
@@ -27,6 +27,12 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
             hover: "hover:bg-card-urgent-hover",
             border: "border-card-urgent-border",
             text: "text-card-urgent-text",
+        },
+        "card-warn": {
+            bg: "bg-card-warn",
+            hover: "hover:bg-card-warn-hover",
+            border: "border-card-warn-border",
+            text: "text-card-warn-text"
         },
         "card-risk": {
             bg: "bg-card-risk",
