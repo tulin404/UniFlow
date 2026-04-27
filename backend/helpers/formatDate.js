@@ -39,22 +39,23 @@ export function smartDueFormat(dueDate) {
     const diffDays = Math.floor( (dueDay.getTime() - today.getTime()) / (1000 * 60 * 60 * 24) );
     const diffTime = Math.floor(formatted.getTime() - now.getTime())
 
-    // SMART FORMATTING
-    if (diffDays < 0) return [`Atrasado • ${dueTime}`, diffTime, 0];
+    // SMART FORMATTING FOR ONLY HOUR LESSONS
     if (diffDays === 0) return [`Hoje • ${dueTime}`, diffTime, 1];
     if (diffDays === 1) return [`Amanhã • ${dueTime}`, diffTime, 2];
-
+    
     // FUTURE LESSONS
     const weekday = new Intl.DateTimeFormat("pt-br", {
         weekday: "short"
     }).format(formatted).replace(".", "");
-
+    
     const dayAndMonth = new Intl.DateTimeFormat("pt-br", {
         day: "2-digit",
         month: "short"
     }).format(formatted);
-
+    
     const capWeekday = weekday.charAt(0).toUpperCase() + weekday.slice(1);
+    
+    if (diffDays < 0) return [`Atrasado • ${dayAndMonth}`, diffTime, 0];    
 
     return ([`${capWeekday}, ${dayAndMonth} • ${dueTime}`, diffTime, 3]);
 };
