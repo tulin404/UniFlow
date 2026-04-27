@@ -1,7 +1,7 @@
 import { CalendarDaysIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
 
-export default function LessonCard({ actCourse, actName, actLink, dueDate, done, state, lastMod, theme, childrenNum }) {
+export default function LessonCard({ actCourse, actName, actLink, dueDate, done, state, lastMod, theme }) {
 
     const getStyles = () => {
         if (state === 0) return "card-urgent";
@@ -63,7 +63,7 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
     const styles = badgeStyles[color];
 
     return (
-        <a href={actLink} target="_blank" rel="noopener noreferrer" className={`${childrenNum <= 2 ? "w-[60dvw] sm:w-[40dvw] lg:w-[35dvw] xl:w-[25dvw]" : "h-full"}`}>
+        <a href={actLink} target="_blank" rel="noopener noreferrer">
             <article className={`${done ? "opacity-75" : "opacity-100"} ${styles.bg} ${styles.hover} ${styles.border} flex flex-col font-[Inter] transition-all duration-200 rounded-md border-2 hover:-translate-y-1 px-4 py-2 gap-2 h-full`}>
                 <h3 className="act-title text-text flex gap-2.5">
                     <span className="flex-1 md:text-lg font-bold line-clamp-2">{actName}</span>
