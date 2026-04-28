@@ -95,15 +95,27 @@
 
     --color-skeleton: oklch(0.18 0.01 274);
     --color-skeleton-highlight: oklch(0.22 0.015 274);
-}
+};
 
 header {
     box-shadow: 0 0 4px 0 var(--color-shadow);
-}
+};
 
 button {
     @apply hover:cursor-pointer;
-}
+};
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        circle at 75% 70%,
+        rgba(124, 58, 237, 0.16),
+        transparent 40%
+    );
+    pointer-events: none;
+};
 
 body {
     position: relative;
@@ -119,18 +131,6 @@ body {
     animation: gradientMove 12s ease infinite;
 };
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: radial-gradient(
-        circle at 75% 70%,
-        rgba(124, 58, 237, 0.16),
-        transparent 40%
-    );
-    pointer-events: none;
-}
-
 .dark body {
     background: linear-gradient(
         160deg,
@@ -144,6 +144,10 @@ body::before {
     animation: gradientMove 12s ease infinite;
 };
 
+.title-bar {
+    box-shadow: 0 0 8px 1.5px var(--color-primary)
+};
+
 .skeleton {
     background: linear-gradient(
       90deg,
@@ -154,7 +158,7 @@ body::before {
     background-size: 200% 100%;
     animation: shimmer 1.6s infinite linear;
     filter: blur(0.2px);
-}
+};
 
 @keyframes shimmer {
     0% {
@@ -162,10 +166,10 @@ body::before {
     } 100% {
         background-position: 200% 0;
     }
-}
+};
 
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
-}
+};
