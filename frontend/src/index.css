@@ -106,25 +106,42 @@ button {
 }
 
 body {
+    position: relative;
     background: linear-gradient(
         160deg,
-        #F9FAFB 0%,
-        #F3F4F6 35%,
-        #EDE9FE 70%,
-        #DDD6FE 100%
+        #FFFFFF 0%,
+        #F3F4F6 30%,
+        #E9E5FF 65%,
+        #C4B5FD 100%
     );
+    background-size: 200% 200%;
     min-height: 100vh;
+    animation: gradientMove 12s ease infinite;
 };
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(
+        circle at 75% 70%,
+        rgba(124, 58, 237, 0.16),
+        transparent 40%
+    );
+    pointer-events: none;
+}
 
 .dark body {
     background: linear-gradient(
         160deg,
-        oklch(0.10 0.015 274) 0%,
-        oklch(0.14 0.02 274) 40%,
-        oklch(0.18 0.025 274) 70%,
-        oklch(0.22 0.03 274) 100%
+        oklch(0.08 0.02 274) 0%,
+        oklch(0.12 0.025 274) 35%,
+        oklch(0.16 0.03 274) 70%,
+        oklch(0.20 0.035 274) 100%
     );
+    background-size: 200% 200%;
     min-height: 100vh;
+    animation: gradientMove 12s ease infinite;
 };
 
 .skeleton {
@@ -145,4 +162,10 @@ body {
     } 100% {
         background-position: 200% 0;
     }
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
