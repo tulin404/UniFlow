@@ -128,7 +128,7 @@ body {
     );
     background-size: 200% 200%;
     min-height: 100vh;
-    animation: gradientMove 16s ease infinite;
+    animation: gradientMove 12s ease infinite;
 };
 
 .dark body {
@@ -141,11 +141,11 @@ body {
     );
     background-size: 200% 200%;
     min-height: 100vh;
-    animation: gradientMove 16s ease infinite;
+    animation: gradientMove 12s ease infinite;
 };
 
 .title-bar {
-    box-shadow: 0 0 8px 1.5px var(--color-primary)
+    box-shadow: 0 0 8px 1.5px var(--color-primary);
 };
 
 .skeleton {
