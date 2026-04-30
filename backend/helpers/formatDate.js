@@ -76,9 +76,15 @@ export function smartLastModFormat(lastModDate) {
     const diffMs = Math.abs(now - lastModTime);
     const diffHours = diffMs / (1000 * 60 * 60);
 
+    if (diffHours < 1) return ("Há alguns minutos.");
+
+    if (diffHours === 1) return ("Há uma hora.");
+
     if (diffHours < 24){
         return (`Há ${Math.ceil(diffHours)} horas.`);
     } else {
+        if (diffHours === 24) return ("Há um dia.");
+
         if (diffHours <= 72) {
             const days = Math.floor(diffHours / 24);
             const hours = Math.floor(diffHours % 24);
