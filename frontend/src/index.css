@@ -144,8 +144,18 @@ body {
     animation: gradientMove 12s ease infinite;
 };
 
-.title-bar {
-    box-shadow: 0 0 8px 1.5px var(--color-primary);
+.title-bar::before {
+    display: inline-block;
+    content: "";
+    height: 100%;
+    width: 100%;
+    box-shadow: 0 0 8px 2px var(--color-primary);
+    opacity: 50%;
+    @apply transition-opacity duration-300;
+};
+
+.group:hover > .title-bar::before {
+    opacity: 100%;
 };
 
 .skeleton {
