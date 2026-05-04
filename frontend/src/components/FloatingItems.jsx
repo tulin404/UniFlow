@@ -1,44 +1,52 @@
-import { useState } from "react";
+import { useMemo } from "react";
 import { AcademicCapIcon, BookOpenIcon, PencilIcon, DocumentTextIcon } from "@heroicons/react/24/outline";
 
-const CHOICES = [AcademicCapIcon, BookOpenIcon, PencilIcon, DocumentTextIcon];
+const ICONS = [AcademicCapIcon, BookOpenIcon, PencilIcon, DocumentTextIcon];
+const ANIMATIONS = ['floatA', 'floatB', 'floatC'];
 
 const rangeBetween = (min, max) => Math.random() * (max - min) + min;
 
-const getChoice = () => {
-    return CHOICES[Math.floor(rangeBetween(0, CHOICES.length))];
+const getChoice = (poss) => {
+    return poss[Math.floor(rangeBetween(0, poss.length))];
 };
 
-export default function FloatingBooks() {
+export default function FloatingItems() {
 
     // LAZY LOADING, HIGH CPU COST
-    const [booksArray] = useState(() => {
-        return Array.from({ length: 3 }).map((_, index) => ({
+    const itemsArray = useMemo(() => {
+        return Array.from({ length: 4 }).map((_, index) => ({
             id: index,
-            choice: getChoice(),
-            top: rangeBetween(0, 80),
-            left: rangeBetween(0, 80),
+            choice: getChoice(ICONS),
+            top: rangeBetween(20, 80),
+            left: rangeBetween(10, 80),
             duration: rangeBetween(12, 22),
             delay: rangeBetween(0, 5),
+            animation: getChoice(ANIMATIONS),
+            height: rangeBetween(16, 48),
+            filter: rangeBetween(0.5, 1.5)
         }));
-    });
+    }, []);
 
     return (
         <>
-            {booksArray.map(book => {
+            {itemsArray.map(item => {
                 return (
-                    <book.choice
-                        key={book.id}
+                    <item.choice
+                        key={item.id}
                         className="floating-item"
                         style={{
-                            top: `${book.top}%`,
-                            left: `${book.left}%`,
-                            animationDuration: `${book.duration}%`,
-                            animationDelay: `${book.delay}%`
+                            height: `${item.height}px`,
+                            top: `${item.top}%`,
+                            left: `${item.left}%`,
+                            animationName: item.animation,
+                            animationDuration: `${item.duration}s`,
+                            animationDelay: `${item.delay}s`,
+                            filter: `blur(${item.filter}px)`,
+                            zIndex: `-${item.filter}`
                         }}
                     />
                 );
-            })};
+            })}
         </>
     );
 };
