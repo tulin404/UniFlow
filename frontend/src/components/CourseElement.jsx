@@ -27,7 +27,7 @@ export default function CourseElement({ obj, index, limit }) {
                 };
             });
 
-            const sortedActivities = completeActivities.sort((a, b) => a.priority - b.priority);
+            const sortedActivities = completeActivities.sort((a, b) => a.priority - b.priority).slice(0, limit);
             
             return(
                 <>
