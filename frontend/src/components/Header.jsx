@@ -1,12 +1,14 @@
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
+import HamMenu from "./HamMenu";
 
-export default function Header({ theme, setTheme }) {
+export default function Header({ theme, setTheme, isMenuOpen, setMenuOpen }) {
     function toggleTheme() {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
     
     return (
         <header className="bg-header py-6 flex justify-center items-center relative transition-colors duration-200">
+            <HamMenu isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
             <a href="/" className="flex items-end">
                 <img src="./Logo.svg" className="h-13 pr-1 mb-1" />
                 <h1 className="hidden sm:flex items-end font-[satoshi] text-6xl text-text font-semibold">niFlow</h1>

@@ -185,7 +185,7 @@ body {
 };
 
 .floating-item {
-    position: absolute;
+    position: fixed;
     animation-iteration-count: infinite;
     animation-timing-function: ease-in-out;
     color: var(--color-primary-soft);
@@ -212,4 +212,8 @@ body {
 
 #nprogress .bar {
     background: var(--color-primary) !important;
+};
+
+#ham-menu-icon:hover span {
+    box-shadow: 0 0 8px 2px var(--color-text-muted);
 };
