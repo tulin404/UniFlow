@@ -1,5 +1,4 @@
 import * as cheerio from "cheerio";
-import { smartDueFormat, smartLastModFormat } from "./formatDate.js";
 
 const openMsg = "Aberto";
 
@@ -14,7 +13,7 @@ function CreateActivitiesWithCourse(courseName, activiesArray) {
     };
 };
 
-function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state) {
+function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod) {
     return {
         actId: actId,
         actCourse: actCourse ? actCourse : "", // FOR DONE LESSONS
@@ -23,8 +22,6 @@ function CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, la
         dueDate: dueDate,
         done: done,
         lastMod: lastMod ? lastMod : [],
-        priority: priority,
-        state: state
     };
 };
 
@@ -50,23 +47,21 @@ function getLastMod(html) {
     });
 
     const lastModRaw = lastModDate.contents().first().text().trim();
-    const lastModFormatted = smartLastModFormat(lastModRaw);
-    return lastModFormatted;
+    return lastModRaw;
 };
 
-function getDueDateAndPriority(html) {
+function getDueDate(html) {
     const $ = cheerio.load(html);
     const lastDiv = $("div.activity-dates > div:last-child");
     const allTxt = lastDiv.text();
     const strongTxt = $(lastDiv).find("strong").text();
     const replacedStrong = allTxt.replace(`<strong>${strongTxt}</strong>`, "").trim();
-    const replacedDue = replacedStrong.replace("Vencimento: ", "");
-    const realDate = smartDueFormat(replacedDue);
     
     if (replacedStrong.startsWith(openMsg)) {
         return("Data para entrega não definida.")
     } else {
-        return realDate;
+        const replacedDue = replacedStrong.replace("Vencimento: ", "");
+        return replacedDue;
     };
 };
 
@@ -84,18 +79,14 @@ function filterCourseName(courseName) {
     return courseFilter[courseName.toUpperCase()] ? courseFilter[courseName.toUpperCase()] : courseName;
 };
 
-function sortActArray(actArr) {
-    return actArr.sort((a, b) => a.priority - b.priority);
-};
-
 export default function AcHelper() {
     return{
         Course: (name, link) => Course(name, link),
         CreateActivitiesWithCourse: (courseName, activiesArray) => CreateActivitiesWithCourse(courseName, activiesArray),
-        CreateActivityObj: (actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state) => CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod, priority, state),
+        CreateActivityObj: (actId, actCourse, actName, actLink, dueDate, done, lastMod) => CreateActivityObj(actId, actCourse, actName, actLink, dueDate, done, lastMod),
         getActName: (linkElement) => getActName(linkElement),
         getLastMod: (html) => getLastMod(html),
-        getDueDateAndPriority: (html) => getDueDateAndPriority(html),
+        getDueDate: (html) => getDueDate(html),
         isDone: (html) => isDone(html),
         filterCourseName: (courseName) => filterCourseName(courseName),
         sortActArray: (actArr) => sortActArray(actArr)

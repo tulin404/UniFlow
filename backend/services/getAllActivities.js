@@ -96,30 +96,25 @@ export default async function getAllActivities() {
                 const id = parseInt(new URL(href).searchParams.get("id"));
                 const actName = helper.getActName(link);
     
-                // DUEDATE, PRIORITY AND STATE
-                const smartDateObj = helper.getDueDateAndPriority(html);
-                const dueDate = smartDateObj[0];
-                const priority = smartDateObj[1];
-                let state = smartDateObj[2];
+                // DUEDATE
+                const dueDate = helper.getDueDate(html);
     
                 const done = helper.isDone(html);
                 let lastMod;
                 if (done) {
                     lastMod = helper.getLastMod(html);
-                    state = -1;
                 };
                 
                 if (!actName) return null;
 
-                const actObj = helper.CreateActivityObj(id, courseNameFiltered, actName, href, dueDate, done, lastMod, priority, state);
+                const actObj = helper.CreateActivityObj(id, courseNameFiltered, actName, href, dueDate, done, lastMod);
                 return actObj;
                 
             })
         );
 
         const filtered = activitiesArray.filter(Boolean);
-        const sortedActArr = helper.sortActArray(filtered);
-        const finalObj = helper.CreateActivitiesWithCourse(courseNameFiltered, sortedActArr);
+        const finalObj = helper.CreateActivitiesWithCourse(courseNameFiltered, filtered);
         finalArr.push(finalObj);
     };
     return finalArr;

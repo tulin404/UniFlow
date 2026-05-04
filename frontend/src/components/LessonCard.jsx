@@ -1,7 +1,8 @@
 import { CalendarDaysIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
+import { smartDueFormat } from "../helpers/dateHelper";
 
-export default function LessonCard({ actCourse, actName, actLink, dueDate, done, state, lastMod, theme, childrenNum }) {
+export default function LessonCard({ actCourse, actName, actLink, dueDate, done, lastMod, priority, state, childrenNum }) {
 
     const getStyles = () => {
         if (state === 0) return "card-urgent";
