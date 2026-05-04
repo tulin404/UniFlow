@@ -1,6 +1,6 @@
 import { CalendarDaysIcon, ClockIcon } from "@heroicons/react/24/outline";
 import { ExclamationCircleIcon, CheckCircleIcon, ExclamationTriangleIcon } from "@heroicons/react/24/solid";
-import { smartDueFormat } from "../helpers/dateHelper";
+import { smartDueFormat, smartLastModFormat } from "../helpers/dateHelper";
 
 export default function LessonCard({ actCourse, actName, actLink, dueDate, done, lastMod, priority, state, childrenNum }) {
 
@@ -62,6 +62,7 @@ export default function LessonCard({ actCourse, actName, actLink, dueDate, done,
 
     const color = getStyles();
     const styles = badgeStyles[color];
+
 
     return (
         <a href={actLink} target="_blank" rel="noopener noreferrer" className={`card relative ${childrenNum <= 2 ? "min-w-[40dvw] lg:min-w-[30dvw] xl:min-w-[25dvw]" : ""}`}>

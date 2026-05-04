@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import GridTitle from "./GridTitle";
 import LessonCard from "./LessonCard";
 import LessonSkeleton from "./LessonSkeleton";
+import { smartLastModFormat } from "../helpers/dateHelper";
 
 export default function DoneGrid({ name, data, active, setActive, theme, limit, setLimit }) {
 
@@ -34,7 +35,7 @@ export default function DoneGrid({ name, data, active, setActive, theme, limit, 
             </section>
         )
     } else {
-        const elements = Array.isArray(data) ? data?.map(piece => piece.activities)?.filter(activ => activ.length > 0)?.flat()?.filter(item => item.done)?.toSorted((a, b) => b.priority - a.priority) : [];
+        const elements = Array.isArray(data) ? data?.map(piece => piece.activities)?.filter(activ => activ.length > 0)?.flat()?.filter(item => item.done)?.toSorted((a, b) => b.priority - a.priority) : null;
         const visibleLessons = elements.slice(0, limit);
         const childrenNum = visibleLessons.length;
 
@@ -42,7 +43,7 @@ export default function DoneGrid({ name, data, active, setActive, theme, limit, 
             <section className="py-[4%] px-[8%] gap-4 flex flex-col">
                 <GridTitle name={name} active={active} setActive={setActive} />
                 <div id="done-grid" className={`grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(280px,1fr))] gap-4 overflow-hidden transition-[max-height] duration-200 pt-2 ${active ? "max-h-250" : "max-h-0"}`}>
-                    {elements.slice(0, limit).map(element => <LessonCard key={element.actId} theme={theme} actCourse={element.actCourse} actName={element.actName} actLink={element.actLink} dueDate={element.dueDate} done={element.done} status={element.status} lastMod={element.lastMod} childrenNum={childrenNum} />)}
+                    {elements.slice(0, limit).map(element => <LessonCard key={element.actId} actCourse={element.actCourse} actName={element.actName} actLink={element.actLink} dueDate={element.dueDate} done={element.done} status={element.status} lastMod={smartLastModFormat(element.lastMod)} childrenNum={childrenNum} />)}
                 </div>
             </section>
         );
