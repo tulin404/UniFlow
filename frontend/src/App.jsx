@@ -4,6 +4,7 @@ import DoneGrid from "./components/DoneGrid";
 import MainGrid from "./components/MainGrid";
 import Waves from "./components/Waves";
 import FloatingItems from "./components/FloatingItems";
+import Loading from "./components/Loading";
 
 export default function App() {
 
@@ -32,15 +33,19 @@ export default function App() {
         return stored ? JSON.parse(stored) : null;
     });
 
-    function updateData(newData) {
+    const updateData = (newData) => {
         setData(newData);
         localStorage.setItem("activ", JSON.stringify(newData));
     };
+
+    const [isLoading, setLoading] = useState(false);
 
     useEffect(() => {
         const controller = new AbortController();
 
         async function getFullObj() {
+            setLoading(true);
+
             try {
                 const raw = await fetch(`${import.meta.env.VITE_API_URL}`, {
                     signal: controller.signal
@@ -53,11 +58,15 @@ export default function App() {
                 if (error.name !== "AbortError") {
                     console.log("Erro na request das atividades:", error);
                 };
+            } finally {
+                setLoading(false);
             };
+
         };
 
         getFullObj();
 
+        // CLEANUP FOR RACE CONDITION
         return () => controller.abort();
     }, []);
 
@@ -75,6 +84,7 @@ export default function App() {
             <Waves />
             <FloatingItems />
             <Header setTheme={setTheme} theme={theme} />
+            <Loading isLoading={isLoading} />
             <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={doneLimit} setLimit={setDoneLimit} />
             <MainGrid name="Abertas" data={data} active={mainActive} setActive={setMainActive} theme={theme} limit={doneLimit}/>
         </>

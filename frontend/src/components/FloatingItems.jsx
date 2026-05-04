@@ -14,7 +14,7 @@ export default function FloatingItems() {
 
     // LAZY LOADING, HIGH CPU COST
     const itemsArray = useMemo(() => {
-        return Array.from({ length: 4 }).map((_, index) => ({
+        return Array.from({ length: 3 }).map((_, index) => ({
             id: index,
             choice: getChoice(ICONS),
             top: rangeBetween(20, 80),
@@ -22,7 +22,7 @@ export default function FloatingItems() {
             duration: rangeBetween(12, 22),
             delay: rangeBetween(0, 5),
             animation: getChoice(ANIMATIONS),
-            height: rangeBetween(16, 48),
+            height: rangeBetween(16, 32),
             filter: rangeBetween(0.5, 1.5)
         }));
     }, []);

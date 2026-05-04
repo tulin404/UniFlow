@@ -193,19 +193,23 @@ body {
 };
 
 @keyframes floatA {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-50px); }
-  100% { transform: translateY(0); }
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-50px); }
+    100% { transform: translateY(0); }
 }
 
 @keyframes floatB {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(30px, -20px); }
-  100% { transform: translate(0, 0); }
+    0% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -20px); }
+    100% { transform: translate(0, 0); }
 }
 
 @keyframes floatC {
-  0% { transform: rotate(0deg); }
-  50% { transform: rotate(15deg) translateY(-15px); }
-  100% { transform: rotate(0deg); }
+    0% { transform: rotate(0deg); }
+    50% { transform: rotate(15deg) translateY(-15px); }
+    100% { transform: rotate(0deg); }
 }
+
+#nprogress .bar {
+    background: var(--color-primary) !important;
+};
