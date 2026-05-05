@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR" class="overflow-x-clip bg-color-base min-h-full -z-2">
+<html lang="pt-BR" class="min-h-screen">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/Logo.svg" />
@@ -9,20 +9,20 @@
     <link rel="stylesheet" href="src/index.css">
     <!-- THEME -->
     <script>
-    (function () {const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-
+      (function () {const theme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      
       if (theme === 'dark') {
-          document.documentElement.classList.add('dark');
+        document.documentElement.classList.add('dark');
       } else {
-          document.documentElement.classList.remove('dark');
+        document.documentElement.classList.remove('dark');
       };
     })();
     </script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>UniFlow</title>
   </head>
-  <body class="transition-colors duration-200">
-    <div id="root"></div>
+  <body class="transition-colors duration-200 min-h-screen overflow-x-clip">
+    <div id="root" class="min-h-dvh"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
