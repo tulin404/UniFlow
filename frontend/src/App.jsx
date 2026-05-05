@@ -5,7 +5,7 @@ import MainGrid from "./components/MainGrid";
 import Waves from "./components/Waves";
 import FloatingItems from "./components/FloatingItems";
 import Loading from "./components/Loading";
-import HamMenuIcon from "./components/HamMenu";
+import Overlay from "./components/Overlay";
 
 export default function App() {
 
@@ -86,6 +86,7 @@ export default function App() {
             <Waves />
             <FloatingItems />
             <Header setTheme={setTheme} theme={theme} isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
+            <Overlay isMenuOpen={isMenuOpen} />
             <Loading isLoading={isLoading} />
             <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={doneLimit} setLimit={setDoneLimit} />
             <MainGrid name="Abertas" data={data} active={mainActive} setActive={setMainActive} theme={theme} limit={doneLimit}/>
