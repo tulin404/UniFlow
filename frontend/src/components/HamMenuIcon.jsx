@@ -1,4 +1,4 @@
-export default function HamMenu({ isMenuOpen, setMenuOpen }) {
+export default function HamMenuIcon({ isMenuOpen, setMenuOpen }) {
 
     return (
         <nav id="ham-menu-icon" aria-label="Main Navigation Menu" className="h-5.5 w-7 sm:h-6 sm:w-7.5 absolute left-5 md:left-10 lg:left-12">
