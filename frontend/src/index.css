@@ -217,3 +217,7 @@ body {
 #ham-menu-icon:hover span {
     box-shadow: 0 0 8px 2px var(--color-text-muted);
 };
+
+#menu-list {
+    box-shadow: 0 0 12px 2px var(--color-color-base);
+}

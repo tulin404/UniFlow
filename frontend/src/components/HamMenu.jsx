@@ -10,9 +10,9 @@ export default function HamMenu({ isMenuOpen, setMenuOpen }) {
             };
         };
 
-        window.addEventListener("mousedown", handleClickOutside);
+        window.addEventListener("click", handleClickOutside);
 
-        return () => window.removeEventListener("mousedown", handleClickOutside);
+        return () => window.removeEventListener("click", handleClickOutside);
     }, []);
 
     return (
@@ -22,10 +22,10 @@ export default function HamMenu({ isMenuOpen, setMenuOpen }) {
                 <span className={`${isMenuOpen ? "opacity-0" : "opacity-100"} h-0.5 relative w-full bg-text rounded-full transition-all duration-300`}></span>
                 <span className={`${isMenuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45" : "bottom-0 translate-y-0 rotate-0"} h-0.5 relative w-full bg-text rounded-full transition-all duration-300`}></span>
             </button>
-            <ul ref={menuRef} id="menu-list" inert={!isMenuOpen} className={`${isMenuOpen ? "block" : "hidden"} fixed top-0 bottom-0 left-10 bg-green-400 z-5`}>
-                <li><a onClick={() => setMenuOpen(!isMenuOpen)} >Lições</a></li>
-                <li><a onClick={() => setMenuOpen(!isMenuOpen)} href="google.com" target="_blank">Calendário</a></li>
-                <li><a onClick={() => setMenuOpen(!isMenuOpen)} >Notas</a></li>
+            <ul ref={menuRef} id="menu-list" inert={!isMenuOpen} className={`${isMenuOpen ? "translate-x-0" : "-translate-x-[100dvw]"} fixed top-0 bottom-0 left-0 right-32 bg-color-base z-5 flex flex-col px-5 py-32 gap-6 transition-transform duration-400`}>
+                <li><a onClick={() => setMenuOpen(!isMenuOpen)} className="text-text text-xl" >Lições</a></li>
+                <li><a onClick={() => setMenuOpen(!isMenuOpen)} className="text-text text-xl" href="google.com" target="_blank">Calendário</a></li>
+                <li><a onClick={() => setMenuOpen(!isMenuOpen)} className="text-text text-xl" >Notas</a></li>
             </ul>
         </nav>
     );

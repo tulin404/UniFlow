@@ -5,7 +5,7 @@ import MainGrid from "./components/MainGrid";
 import Waves from "./components/Waves";
 import FloatingItems from "./components/FloatingItems";
 import Loading from "./components/Loading";
-import HamMenuIcon from "./components/HamMenuIcon";
+import HamMenuIcon from "./components/HamMenu";
 
 export default function App() {
 
