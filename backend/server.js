@@ -13,7 +13,7 @@ app.use(cors({
     credential: true
 }));
 
-app.get('/', activitiesController);
+app.get('/activities', activitiesController);
 
 app.listen(port, () => {
     console.log(`Running on ${port}`);

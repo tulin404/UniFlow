@@ -47,7 +47,7 @@ export default function App() {
             setLoading(true);
 
             try {
-                const raw = await fetch(`${import.meta.env.VITE_API_URL}`, {
+                const raw = await fetch(`${import.meta.env.VITE_API_URL}/activities`, {
                     signal: controller.signal
                 });
                 const json = await raw.json();
