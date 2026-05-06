@@ -6,9 +6,9 @@ export default function Profile({ isProfileOpen, setProfileOpen }) {
     const img = "";
 
     return (
-        <div className="absolute flex justify-center right-12.5 md:right-25 lg:right-30">
+        <div className="absolute flex justify-center right-15 sm:right-20 md:right-25 lg:right-30">
             <button id="profile-btn" onClick={() => setProfileOpen(!isProfileOpen)} className="z-5 relative p-2 rounded-full bg-primary border-2" type="button" aria-label="Abrir menu de usuário" aria-haspopup="menu" aria-expanded={isProfileOpen} aria-controls="user-menu">
-                <img src={img || "./default-pfp.png"} className="size-8" />
+                <img src={img || "./default-pfp.png"} className="sm:size-8 size-6" />
             </button>
 
             <ul id="user-menu" role="menu" className="absolute hidden">
