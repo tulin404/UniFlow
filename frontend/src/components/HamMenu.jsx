@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 
-export default function HamMenu({ isMenuOpen, setMenuOpen }) {
+export default function HamMenu({ isMenuOpen, setMenuOpen, isProfileOpen }) {
     const menuRef = useRef(null);
 
     if (isMenuOpen) {
@@ -23,7 +23,7 @@ export default function HamMenu({ isMenuOpen, setMenuOpen }) {
 
     return (
         <nav id="ham-menu" aria-label="Open Menu" className="h-5.5 w-7 md:hidden absolute left-5">
-            <button id="open-menu" onClick={() => setMenuOpen(!isMenuOpen)} aria-expanded={isMenuOpen} aria-controls="menu-list" className={`${isMenuOpen ? "rotate-180" : "rotate-0"} z-6 relative size-full flex flex-col justify-between transition-[rotate] duration-500`}>
+            <button id="open-menu" onClick={() => setMenuOpen(!isMenuOpen)} aria-expanded={isMenuOpen} aria-controls="menu-list" className={`${isMenuOpen ? "rotate-180" : "rotate-0"} ${isProfileOpen ? "z-4" : "z-6"} relative size-full flex flex-col justify-between transition-[rotate] duration-500`}>
                 <span className={`${isMenuOpen ? "top-1/2 -translate-y-1/2 rotate-45" : "top-0 translate-y-0 rotate-0"} relative h-0.5 w-full bg-text rounded-full transition-all duration-300`}></span>
                 <span className={`${isMenuOpen ? "opacity-0" : "opacity-100"} h-0.5 relative w-[70%] bg-text rounded-full transition-all duration-300`}></span>
                 <span className={`${isMenuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45 w-full" : "bottom-0 translate-y-0 rotate-0 w-[40%]"} h-0.5 relative bg-text rounded-full transition-all duration-300`}></span>
