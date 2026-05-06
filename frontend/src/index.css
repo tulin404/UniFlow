@@ -47,6 +47,13 @@
 
     --color-skeleton: oklch(0.93 0.01 274);
     --color-skeleton-highlight: oklch(0.97 0.005 274);
+
+    --profile-gradient: linear-gradient(
+        135deg,
+        oklch(0.75 0.12 300),
+        oklch(0.70 0.14 280),
+        oklch(0.78 0.10 320)
+    );
 };
 
 .dark {
@@ -95,6 +102,13 @@
 
     --color-skeleton: oklch(0.18 0.01 274);
     --color-skeleton-highlight: oklch(0.22 0.015 274);
+
+    --profile-gradient: linear-gradient(
+        135deg,
+        oklch(0.55 0.18 285),
+        oklch(0.50 0.20 270),
+        oklch(0.60 0.16 305)
+    );
 };
 
 html {
@@ -230,4 +244,33 @@ body {
 
 #menu-list {
     box-shadow: 0 0 12px 2px var(--color-color-base);
+}
+
+#profile-btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: var(--color-color-base);
+    border-radius: inherit;
+    z-index: -1;
+}
+
+#profile-btn::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: var(--profile-gradient);
+    background-size: 300% 300%;
+    animation: moveBorder 12s linear infinite;
+    z-index: -1;
+    border-radius: inherit;
+}
+
+@keyframes moveBorder {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 300% 50%;
+    }
 }

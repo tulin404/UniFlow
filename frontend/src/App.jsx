@@ -80,13 +80,14 @@ export default function App() {
     const [mainActive, setMainActive] = useState(false);
     const [doneLimit, setDoneLimit] = useState(4);
     const [isMenuOpen, setMenuOpen] = useState(false);
+    const [isProfileOpen, setProfileOpen] = useState(false);
 
     return (
         <>
             <Waves />
             <FloatingItems />
-            <Header setTheme={setTheme} theme={theme} isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} />
-            <Overlay isMenuOpen={isMenuOpen} />
+            <Header setTheme={setTheme} theme={theme} isMenuOpen={isMenuOpen} setMenuOpen={setMenuOpen} isProfileOpen={isProfileOpen} setProfileOpen={setProfileOpen} />
+            <Overlay isMenuOpen={isMenuOpen} isProfileOpen={isProfileOpen} />
             <Loading isLoading={isLoading} />
             <DoneGrid name="Feitas" data={data} active={doneActive} setActive={setDoneActive} theme={theme} limit={doneLimit} setLimit={setDoneLimit} />
             <MainGrid name="Abertas" data={data} active={mainActive} setActive={setMainActive} theme={theme} limit={doneLimit}/>

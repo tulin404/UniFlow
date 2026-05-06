@@ -1,7 +1,8 @@
 import { SunIcon, MoonIcon } from "@heroicons/react/24/outline";
 import HamMenu from "./HamMenu";
+import Profile from "./Profile";
 
-export default function Header({ theme, setTheme, isMenuOpen, setMenuOpen }) {
+export default function Header({ theme, setTheme, isMenuOpen, setMenuOpen, isProfileOpen, setProfileOpen }) {
     function toggleTheme() {
         setTheme(theme === 'dark' ? 'light' : 'dark');
     };
@@ -20,7 +21,8 @@ export default function Header({ theme, setTheme, isMenuOpen, setMenuOpen }) {
                 <img src="./Logo.svg" className="h-13 pr-1 mb-1" />
                 <h1 className="hidden sm:flex items-end font-[satoshi] text-6xl text-text font-semibold">niFlow</h1>
             </a>
-            <div id="change-theme-wrapper" className="absolute sm:size-9.5 size-8.5 right-5 md:right-10 lg:right-12 translate-y-1/2 bottom-1/2 flex justify-center">
+            <Profile isProfileOpen={isProfileOpen} setProfileOpen={setProfileOpen} />
+            <div id="change-theme-wrapper" className="absolute sm:size-9.5 size-8.5 right-5 md:right-10 lg:right-12 flex justify-center">
                 <button className="absolute size-full">
                     <SunIcon
                         id="sun"
