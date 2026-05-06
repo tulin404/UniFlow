@@ -242,7 +242,7 @@ body {
     background: var(--color-primary) !important;
 };
 
-#menu-list {
+.menu-list {
     box-shadow: 0 0 12px 2px var(--color-color-base);
 }
 

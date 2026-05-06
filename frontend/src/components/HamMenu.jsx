@@ -16,10 +16,14 @@ export default function HamMenu({ isMenuOpen, setMenuOpen, isProfileOpen }) {
             };
         };
 
-        window.addEventListener("click", handleClickOutside);
+        window.addEventListener("pointerdown", handleClickOutside);
 
-        return () => window.removeEventListener("click", handleClickOutside);
+        return () => window.removeEventListener("pointerdown", handleClickOutside);
     }, []);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("overflow-y-hidden");
+    }, [isMenuOpen]);
 
     return (
         <nav id="ham-menu" aria-label="Open Menu" className="h-5.5 w-7 md:hidden absolute left-5">
@@ -28,7 +32,7 @@ export default function HamMenu({ isMenuOpen, setMenuOpen, isProfileOpen }) {
                 <span className={`${isMenuOpen ? "opacity-0" : "opacity-100"} h-0.5 relative w-[70%] bg-text rounded-full transition-all duration-300`}></span>
                 <span className={`${isMenuOpen ? "bottom-1/2 translate-y-1/2 -rotate-45 w-full" : "bottom-0 translate-y-0 rotate-0 w-[40%]"} h-0.5 relative bg-text rounded-full transition-all duration-300`}></span>
             </button>
-            <ul ref={menuRef} id="menu-list" inert={!isMenuOpen} className={`${isMenuOpen ? "translate-x-0" : "-translate-x-[100dvw]"} fixed top-0 bottom-0 left-0 pr-32 bg-color-base z-5 flex flex-col px-5 py-32 gap-6 transition-transform duration-400 text-text text-xl`}>
+            <ul ref={menuRef} id="menu-list" inert={!isMenuOpen} className={`${isMenuOpen ? "translate-x-0" : "-translate-x-[100dvw]"} menu-list fixed top-0 bottom-0 left-0 pr-32 bg-color-base z-5 flex flex-col px-5 py-32 gap-6 transition-transform duration-400 text-text text-xl`}>
                 <li><a onClick={() => setMenuOpen(!isMenuOpen)}>Lições</a></li>
                 <li><a onClick={() => setMenuOpen(!isMenuOpen)}>Calendário</a></li>
                 <li><a onClick={() => setMenuOpen(!isMenuOpen)}>Notas</a></li>

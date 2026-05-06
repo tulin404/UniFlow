@@ -1,6 +1,31 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Profile({ isProfileOpen, setProfileOpen, isMenuOpen }) {
+    const profileRef = useRef(null);
+
+    if (isProfileOpen) {
+        document.documentElement.classList.add("overflow-y-hidden");
+    } else {
+        document.documentElement.classList.remove("overflow-y-hidden");
+    };
+
+    useEffect(() => {
+        function handleClickOutside(e) {
+            if (profileRef.current && !profileRef.current.contains(e.target)) {
+                setProfileOpen(false);
+            };
+        };
+
+        window.addEventListener("pointerdown", handleClickOutside);
+
+        console.log(isProfileOpen)
+
+        return () => window.removeEventListener("pointerdown", handleClickOutside);
+    }, []);
+
+    useEffect(() => {
+        document.documentElement.classList.toggle("overflow-y-hidden");
+    }, [isProfileOpen]);
 
     // CONSUME CLOUDFLARE R2
     const img = "";
@@ -11,7 +36,7 @@ export default function Profile({ isProfileOpen, setProfileOpen, isMenuOpen }) {
                 <img src={img || "./default-pfp.png"} className="md:size-7.5 size-7" />
             </button>
 
-            <ul id="user-menu" role="menu" className={`${isProfileOpen ? "block" : "hidden"} absolute`}>
+            <ul ref={profileRef} id="user-menu" role="menu" inert={!isProfileOpen} className={`${isProfileOpen ? "opacity-100 z-5 pointer-events-auto" : "opacity-0 z-3 pointer-events-none"} fixed menu-list bg-color-base text-text transition-opacity duration-200`}>
                 <li role="none">
                     <a role="menuitem">Perfil</a>
                 </li>
