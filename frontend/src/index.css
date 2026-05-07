@@ -48,6 +48,26 @@
     --color-skeleton: oklch(0.93 0.01 274);
     --color-skeleton-highlight: oklch(0.97 0.005 274);
 
+    --color-button: oklch(0.96 0.01 274);
+    --color-button-hover: oklch(0.90 0.02 274);
+    --color-button-active: oklch(0.84 0.03 274);
+    --color-button-border: oklch(0.84 0.01 274);
+
+    --color-button-danger: oklch(0.94 0.03 25);
+    --color-button-danger-hover: oklch(0.88 0.05 25);
+    --color-button-danger-active: oklch(0.82 0.07 25);
+    --color-button-danger-border: oklch(0.76 0.06 25);
+
+    --color-button-danger-text: oklch(0.42 0.13 25);
+
+    --body-gradient: linear-gradient(
+        160deg,
+        #FFFFFF 0%,
+        #F3F4F6 30%,
+        #E9E5FF 65%,
+        #C4B5FD 100%
+    );
+
     --profile-gradient: linear-gradient(
         135deg,
         oklch(0.75 0.12 300),
@@ -103,6 +123,26 @@
     --color-skeleton: oklch(0.18 0.01 274);
     --color-skeleton-highlight: oklch(0.22 0.015 274);
 
+    --color-button: oklch(0.22 0.01 274);
+    --color-button-hover: oklch(0.28 0.015 274);
+    --color-button-active: oklch(0.34 0.02 274);
+    --color-button-border: oklch(0.34 0.01 274);
+
+    --color-button-danger: oklch(0.30 0.05 25);
+    --color-button-danger-hover: oklch(0.38 0.07 25);
+    --color-button-danger-active: oklch(0.45 0.09 25);
+    --color-button-danger-border: oklch(0.52 0.08 25);
+
+    --color-button-danger-text: oklch(0.82 0.14 25);
+
+    --body-gradient: linear-gradient(
+        160deg,
+        oklch(0.08 0.02 274) 0%,
+        oklch(0.12 0.025 274) 35%,
+        oklch(0.16 0.03 274) 70%,
+        oklch(0.20 0.035 274) 100%
+    );
+
     --profile-gradient: linear-gradient(
         135deg,
         oklch(0.55 0.18 285),
@@ -147,29 +187,10 @@ body::before {
 
 body {
     position: relative;
-    background: linear-gradient(
-        160deg,
-        #FFFFFF 0%,
-        #F3F4F6 30%,
-        #E9E5FF 65%,
-        #C4B5FD 100%
-    );
+    background: var(--body-gradient);
     background-size: 200% 200%;
     animation: gradientMove 12s ease infinite;
     border-bottom: 0 !important;
-};
-
-.dark body {
-    background: linear-gradient(
-        160deg,
-        oklch(0.08 0.02 274) 0%,
-        oklch(0.12 0.025 274) 35%,
-        oklch(0.16 0.03 274) 70%,
-        oklch(0.20 0.035 274) 100%
-    );
-    background-size: 200% 200%;
-    min-height: 100vh;
-    animation: gradientMove 12s ease infinite;
 };
 
 .title-bar::before {
@@ -275,6 +296,18 @@ body {
 
     top: anchor(bottom);
     right: anchor(right);
+}
+
+#user-menu li {
+    @apply rounded-lg px-1 py-0.5 transition-colors duration-200 border-2 border-transparent
+}
+
+#user-menu #logout-btn {
+    @apply hover:border-button-danger-border
+}
+
+#user-menu li:not(#logout-btn) {
+    @apply hover:bg-button-hover hover:border-button-border active:bg-button-active
 }
 
 @keyframes moveBorder {

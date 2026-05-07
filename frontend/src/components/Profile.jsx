@@ -36,18 +36,18 @@ export default function Profile({ isProfileOpen, setProfileOpen, isMenuOpen }) {
                 <img src={img || "./default-pfp.png"} className="md:size-7.5 size-7" />
             </button>
 
-            <ul ref={profileRef} id="user-menu" role="menu" inert={!isProfileOpen} className={`${isProfileOpen ? "opacity-100 z-5 pointer-events-auto" : "opacity-0 z-3 pointer-events-none"} popover absolute menu-list bg-color-base text-text text-xl flex flex-col gap-4 p-4 rounded-lg transition-opacity duration-200`}>
+            <ul ref={profileRef} id="user-menu" role="menu" inert={!isProfileOpen} className={`${isProfileOpen ? "opacity-100 z-5 pointer-events-auto" : "opacity-0 z-3 pointer-events-none"} popover absolute menu-list bg-color-base text-text text-xl flex flex-col gap-3 p-4 rounded-lg transition-opacity duration-200`}>
                 <li role="none">
                     <a role="menuitem">Perfil</a>
                 </li>
                 <li role="none">
                     <a role="menuitem">Atividades</a>
                 </li>
-                <li role="none">
+                <li role="none" className="rounded-md py-0.5 px-1 hover:bg-button-hover hover:border-active-bg border-2 border-transparent transition-colors duration-200">
                     <a role="menuitem">Calendário</a>
                 </li>
-                <div className="h-0.5 bg-text-muted w-full rounded-full"></div>
-                <li role="none">
+                <div className="h-0.5 mx-1 bg-text-muted w-full rounded-full"></div>
+                <li id="logout-btn" role="none" className="hover:bg-button-danger active:bg-button-danger-active hover:border-button-danger-border py-0.5 px-1 rounded-md">
                     <button role="menuitem">Sair</button>
                 </li>
             </ul>
