@@ -32,17 +32,21 @@ export default function Profile({ isProfileOpen, setProfileOpen, isMenuOpen }) {
 
     return (
         <div className="absolute flex justify-center right-5 sm:right-20 md:right-25 lg:right-30">
-            <button id="profile-btn" onClick={() => setProfileOpen(!isProfileOpen)} className={`${isMenuOpen ? "z-3" : "z-5"} relative p-2 rounded-full bg-primary border-2`} type="button" aria-label="Abrir menu de usuário" aria-haspopup="menu" aria-expanded={isProfileOpen} aria-controls="user-menu">
+            <button id="profile-btn" onClick={() => setProfileOpen(!isProfileOpen)} className={`${isMenuOpen ? "z-3" : "z-5"} anchor relative p-2 rounded-full bg-primary border-2`} type="button" aria-label="Abrir menu de usuário" aria-haspopup="menu" aria-expanded={isProfileOpen} aria-controls="user-menu">
                 <img src={img || "./default-pfp.png"} className="md:size-7.5 size-7" />
             </button>
 
-            <ul ref={profileRef} id="user-menu" role="menu" inert={!isProfileOpen} className={`${isProfileOpen ? "opacity-100 z-5 pointer-events-auto" : "opacity-0 z-3 pointer-events-none"} fixed menu-list bg-color-base text-text transition-opacity duration-200`}>
+            <ul ref={profileRef} id="user-menu" role="menu" inert={!isProfileOpen} className={`${isProfileOpen ? "opacity-100 z-5 pointer-events-auto" : "opacity-0 z-3 pointer-events-none"} popover absolute menu-list bg-color-base text-text text-xl flex flex-col gap-4 p-4 rounded-lg transition-opacity duration-200`}>
                 <li role="none">
                     <a role="menuitem">Perfil</a>
                 </li>
-                <li id="separate" role="none">
+                <li role="none">
                     <a role="menuitem">Atividades</a>
                 </li>
+                <li role="none">
+                    <a role="menuitem">Calendário</a>
+                </li>
+                <div className="h-0.5 bg-text-muted w-full rounded-full"></div>
                 <li role="none">
                     <button role="menuitem">Sair</button>
                 </li>

@@ -266,6 +266,17 @@ body {
     border-radius: inherit;
 }
 
+.anchor {
+    anchor-name: --profile-button;
+}
+
+.popover {
+    position-anchor: --profile-button;
+
+    top: anchor(bottom);
+    right: anchor(right);
+}
+
 @keyframes moveBorder {
     0% {
         background-position: 0% 50%;
