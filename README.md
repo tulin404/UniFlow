@@ -35,3 +35,5 @@ O _Uniflow_ entrega aquilo que você quer saber, na hora que você quer saber, s
 - Quantidade de faltas em cada matéria
 - Anotações por matéria
 - Versão app mobile
+## 🔨 WORK IN PROGRESS
+- Atualmente estou focado em projetos/serviços para empresas, mas o desenvolvimento deste projeto será retomado assim que houver disponibilidade.
