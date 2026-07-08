@@ -1,7 +1,7 @@
 <h1 align="center">UniFlow</h1>
 <p align="center">
   <img src="https://img.shields.io/github/last-commit/tulin404/UniFlow" />
-  <img alt="Status-building" src="https://img.shields.io/badge/Status-building-blue" />
+  <img alt="Status-building" src="https://img.shields.io/badge/Status-paused-orange" />
   <img src="https://img.shields.io/github/license/tulin404/UniFlow" />
 </p>
 <p align="center">
